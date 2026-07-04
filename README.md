@@ -27,6 +27,8 @@
 | ✨ **Gradient Text** | Animated purple → violet → cyan gradient on key words |
 | 🖱️ **Mouse Glow** | Radial cursor glow follows the mouse |
 | 🌗 **Dark / Light Mode** | Full theme switcher with localStorage persistence |
+| 🛸 **Floating Cosmic Cards** | Cards float diagonally and rotate slowly in zero gravity |
+| 🎵 **Theta Wave Audio** | Soothing programmatically synthesized binaural space music |
 | 📱 **Fully Responsive** | Mobile-first: 2-col grids on phone, optimized at every breakpoint |
 | 🎬 **Scroll Reveal** | All sections animate in on scroll via IntersectionObserver |
 
