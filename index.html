@@ -12,17 +12,21 @@
 </head>
 <body>
 
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
   <!-- Animated BG -->
   <div class="bg-orbs" aria-hidden="true">
-    <div class="orb orb--1"></div>
-    <div class="orb orb--2"></div>
-    <div class="orb orb--3"></div>
-    <div class="orb orb--4"></div>
+    <div class="orb orb--1"></div><div class="orb orb--2"></div>
+    <div class="orb orb--3"></div><div class="orb orb--4"></div>
   </div>
   <canvas id="particleCanvas" aria-hidden="true"></canvas>
   <div class="grid-overlay" aria-hidden="true"></div>
 
-  <!-- Navigation -->
+  <!-- ─── Navigation ─── -->
   <header class="nav" id="nav">
     <a class="nav__logo" href="#home" aria-label="Rakib Sojib home">
       <div class="nav__logo-mark">
@@ -31,17 +35,22 @@
       </div>
       <span class="nav__logo-name">Rakib Sojib</span>
     </a>
-
     <nav class="nav__links" id="navMenu" aria-label="Primary navigation">
-      <a href="#about" class="nav__link">About</a>
+      <a href="#about"    class="nav__link">About</a>
       <a href="#services" class="nav__link">Services</a>
       <a href="#projects" class="nav__link">Projects</a>
-      <a href="#contact" class="nav__link">Contact</a>
+      <a href="#contact"  class="nav__link">Contact</a>
     </nav>
-
     <div class="nav__actions">
+      <button class="music-toggle" id="musicToggle" aria-label="Toggle ambient music" type="button">
+        <span class="music-toggle__icon" id="musicIconContainer">
+          <i id="musicIcon" data-lucide="music"></i>
+        </span>
+      </button>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" type="button">
-        <span class="theme-toggle__icon" id="themeIcon">🌙</span>
+        <span class="theme-toggle__icon" id="themeIconContainer">
+          <i id="themeIcon" data-lucide="moon"></i>
+        </span>
       </button>
       <a class="btn btn--glow" href="https://wa.me/8801950132764" target="_blank" rel="noreferrer">
         <span class="btn__text">Hire Me</span>
@@ -53,44 +62,45 @@
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- ─── Hero ─── -->
   <section class="hero" id="home">
     <div class="hero__content">
       <div class="status-badge reveal-up">
         <span class="status-badge__dot"></span>
         <span>Open for freelance — Available now</span>
       </div>
-
       <h1 class="hero__heading">
         <span class="reveal-line">I Build Apps,</span>
         <span class="reveal-line gradient-text">AI Experiences</span>
         <span class="reveal-line">&amp; Bots That Win.</span>
       </h1>
-
       <p class="hero__sub reveal-fade">
-        Flutter developer &amp; AI creator from Bangladesh — crafting polished mobile apps,
-        cinematic AI videos, Telegram bots, and automation tools for global clients.
+        Flutter developer &amp; AI creator from Bangladesh — crafting
+        <span class="tw-wrap"><span id="typewriter" class="tw-text">polished mobile apps</span></span>
+        for global clients.
       </p>
-
       <div class="hero__btns reveal-fade">
         <a class="btn btn--glow" href="#projects">
-          <span class="btn__icon">⚡</span>
+          <i data-lucide="zap"></i>
           <span class="btn__text">View My Work</span>
           <span class="btn__shine"></span>
         </a>
-        <a class="btn btn--ghost" href="https://www.fiverr.com/s/LdV7zdo" target="_blank" rel="noreferrer">Fiverr Profile</a>
-        <a class="btn btn--ghost" href="https://upwork.com/freelancers/rakibulhasans8" target="_blank" rel="noreferrer">Upwork Profile</a>
+        <a class="btn btn--ghost" href="https://www.fiverr.com/s/LdV7zdo" target="_blank" rel="noreferrer">
+          <i data-lucide="briefcase"></i> Fiverr
+        </a>
+        <a class="btn btn--ghost" href="https://upwork.com/freelancers/rakibulhasans8" target="_blank" rel="noreferrer">
+          <i data-lucide="handshake"></i> Upwork
+        </a>
       </div>
-
       <div class="hero__counters reveal-fade">
         <div class="counter">
-          <span class="counter__num" data-target="7">0</span><span class="counter__plus">+</span>
+          <span class="counter__num" data-target="11">0</span><span class="counter__plus">+</span>
           <span class="counter__label">Projects Done</span>
         </div>
         <div class="counter-divider"></div>
         <div class="counter">
           <span class="counter__num" data-target="100">0</span><span class="counter__plus">%</span>
-          <span class="counter__label">Client Satisfaction</span>
+          <span class="counter__label">Satisfaction</span>
         </div>
         <div class="counter-divider"></div>
         <div class="counter">
@@ -108,22 +118,17 @@
         <div class="profile-orb__img-wrap">
           <img src="assets/profile.jpg" alt="Rakib Sojib" class="profile-orb__img" width="280" height="280" />
         </div>
-        <!-- Floating chips -->
         <div class="float-chip chip--flutter">
-          <span class="chip__icon">📱</span>
-          <span>Flutter</span>
+          <i data-lucide="smartphone" class="chip__icon"></i><span>Flutter</span>
         </div>
         <div class="float-chip chip--ai">
-          <span class="chip__icon">🤖</span>
-          <span>AI Video</span>
+          <i data-lucide="wand-2" class="chip__icon"></i><span>AI Video</span>
         </div>
         <div class="float-chip chip--tg">
-          <span class="chip__icon">✈️</span>
-          <span>Telegram</span>
+          <i data-lucide="send" class="chip__icon"></i><span>Telegram</span>
         </div>
         <div class="float-chip chip--bd">
-          <span class="chip__icon">🇧🇩</span>
-          <span>Bangladesh</span>
+          <i data-lucide="map-pin" class="chip__icon"></i><span>Bangladesh</span>
         </div>
       </div>
     </div>
@@ -134,62 +139,46 @@
     </div>
   </section>
 
-  <!-- About -->
+  <!-- ─── About ─── -->
   <section id="about" class="section about">
     <div class="section-label reveal-up">
       <span class="section-label__line"></span>
       <span class="section-label__text">About Me</span>
     </div>
-
     <div class="about__grid">
       <div class="about__text reveal-up">
-        <h2 class="section__title">
-          Turning ideas into<br /><em>digital reality</em> since day one.
-        </h2>
+        <h2 class="section__title">Turning ideas into<br /><em>digital reality</em> since day one.</h2>
         <p>I work across Flutter apps, AI video generation, Telegram bots, mini apps, and automation. My focus is simple: turn a client idea into something polished, useful, and ready to show.</p>
         <p>I have worked with buyers through Fiverr and Upwork, creating AI video content and product experiences that help clients get better attention, stronger presentation, and practical results.</p>
-
         <div class="about__links">
-          <a class="platform-link" href="https://www.fiverr.com/s/LdV7zdo" target="_blank" rel="noreferrer">
-            <span class="platform-link__icon">🟢</span>
-            <div>
-              <strong>Fiverr</strong>
-              <span>Client Orders</span>
-            </div>
-            <span class="platform-link__arrow">↗</span>
+          <a class="platform-link platform-link--fiverr" href="https://www.fiverr.com/s/LdV7zdo" target="_blank" rel="noreferrer">
+            <svg class="platform-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M22.624 11.232H17.48v-2.316c0-.986.726-1.188 1.19-1.188h2.646V2.68H17.48c-3.56 0-5.148 2.05-5.148 4.96v3.592H9.2v5.044h3.132V24H17.48V16.28h4.096l1.048-5.048z"/></svg>
+            <div><strong>Fiverr</strong><span>Client Orders</span></div>
           </a>
-          <a class="platform-link" href="https://upwork.com/freelancers/rakibulhasans8" target="_blank" rel="noreferrer">
-            <span class="platform-link__icon">🟡</span>
-            <div>
-              <strong>Upwork</strong>
-              <span>Freelance Work</span>
-            </div>
-            <span class="platform-link__arrow">↗</span>
+          <a class="platform-link platform-link--upwork" href="https://upwork.com/freelancers/rakibulhasans8" target="_blank" rel="noreferrer">
+            <svg class="platform-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.56 1.83c-2.89 0-5.11 2.22-5.11 5.11v2.18c-1.39-1.89-2.58-4.08-3.37-6.28H6.55v6.55c0 1.79-1.46 3.25-3.25 3.25S.05 11.18.05 9.39V2.84H0v6.55c0 3.6 2.92 6.52 6.52 6.52s6.52-2.92 6.52-6.52V8.98c.63 1.29 1.48 2.58 2.45 3.73l-1.86 8.45h3.6l1.24-5.69c1.68.74 3.56 1.15 5.56 1.15 2.89 0 5.11-2.22 5.11-5.11V1.83h-3.56v9.18c0 1.79-1.46 3.25-3.25 3.25s-3.25-1.46-3.25-3.25V1.83h-.02z"/></svg>
+            <div><strong>Upwork</strong><span>Freelance Work</span></div>
           </a>
-          <a class="platform-link" href="https://github.com/rakibsojib1" target="_blank" rel="noreferrer">
-            <span class="platform-link__icon">⚫</span>
-            <div>
-              <strong>GitHub</strong>
-              <span>Open Source</span>
-            </div>
-            <span class="platform-link__arrow">↗</span>
+          <a class="platform-link platform-link--github" href="https://github.com/rakibsojib1" target="_blank" rel="noreferrer">
+            <svg class="platform-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            <div><strong>GitHub</strong><span>Open Source</span></div>
           </a>
         </div>
       </div>
 
       <div class="about__cards-wrap">
         <article class="about-card reveal-up" style="--i:0">
-          <div class="about-card__icon">🏆</div>
+          <div class="icon-box ib--amber icon-box--lg"><i data-lucide="trophy"></i></div>
           <h3>Marketplace Experience</h3>
           <p>Fiverr and Upwork client work, including AI video generation projects and delivered orders.</p>
         </article>
         <article class="about-card reveal-up" style="--i:1">
-          <div class="about-card__icon">📱</div>
+          <div class="icon-box ib--purple icon-box--lg"><i data-lucide="smartphone"></i></div>
           <h3>Mobile + Bot Builder</h3>
           <p>Flutter apps, Telegram bots, mini apps, Firebase, APIs, and payment-ready product flows.</p>
         </article>
         <article class="about-card reveal-up" style="--i:2">
-          <div class="about-card__icon">⛓️</div>
+          <div class="icon-box ib--cyan icon-box--lg"><i data-lucide="cpu"></i></div>
           <h3>AI + Blockchain Ready</h3>
           <p>AI content workflows and Telegram bots that connect with TON or other blockchain systems.</p>
         </article>
@@ -197,197 +186,205 @@
     </div>
   </section>
 
-  <!-- Services -->
+  <!-- ─── Services ─── -->
   <section id="services" class="section services">
     <div class="section-label reveal-up">
       <span class="section-label__line"></span>
       <span class="section-label__text">Services</span>
     </div>
-
     <div class="section__head reveal-up">
       <h2 class="section__title">Everything you need to <em>build and grow</em>.</h2>
     </div>
 
     <div class="services__grid">
+      <!-- Large card: Flutter -->
       <article class="service-card service-card--large reveal-up" style="--i:0">
         <div class="service-card__num">01</div>
-        <div class="service-card__icon-wrap">
-          <span class="service-card__emoji">📱</span>
-        </div>
-        <h3>Flutter Apps</h3>
-        <p>Cross-platform mobile apps for ecommerce, education, dashboards, school management, and learning platforms.</p>
-        <div class="service-card__tags">
-          <span>iOS &amp; Android</span>
-          <span>Firebase</span>
-          <span>APIs</span>
+        <div class="icon-box ib--purple icon-box--xl"><i data-lucide="smartphone"></i></div>
+        <div>
+          <h3>Flutter Apps</h3>
+          <p>Cross-platform mobile apps for ecommerce, education, dashboards, school management, and learning platforms.</p>
+          <div class="service-card__tags"><span>iOS &amp; Android</span><span>Firebase</span><span>APIs</span></div>
         </div>
         <div class="service-card__glow"></div>
       </article>
 
       <article class="service-card reveal-up" style="--i:1">
         <div class="service-card__num">02</div>
-        <span class="service-card__emoji">🎬</span>
+        <div class="icon-box ib--cyan icon-box--lg"><i data-lucide="video"></i></div>
         <h3>AI Video Generation</h3>
         <p>Creative AI video assets for clients, ads, reels, promos, and social content.</p>
-        <div class="service-card__tags">
-          <span>Ads</span>
-          <span>Reels</span>
-        </div>
+        <div class="service-card__tags"><span>Ads</span><span>Reels</span></div>
         <div class="service-card__glow"></div>
       </article>
 
       <article class="service-card reveal-up" style="--i:2">
         <div class="service-card__num">03</div>
-        <span class="service-card__emoji">✈️</span>
+        <div class="icon-box ib--blue icon-box--lg"><i data-lucide="send"></i></div>
         <h3>Telegram Bots</h3>
         <p>Custom bots, reward flows, automation, user journeys, and mini app experiences.</p>
-        <div class="service-card__tags">
-          <span>Mini Apps</span>
-          <span>Automation</span>
-        </div>
+        <div class="service-card__tags"><span>Mini Apps</span><span>Automation</span></div>
         <div class="service-card__glow"></div>
       </article>
 
       <article class="service-card reveal-up" style="--i:3">
         <div class="service-card__num">04</div>
-        <span class="service-card__emoji">⛓️</span>
+        <div class="icon-box ib--amber icon-box--lg"><i data-lucide="link-2"></i></div>
         <h3>Blockchain Integrations</h3>
         <p>Telegram bots connected with TON or other blockchain features per project needs.</p>
-        <div class="service-card__tags">
-          <span>TON</span>
-          <span>Web3</span>
-        </div>
+        <div class="service-card__tags"><span>TON</span><span>Web3</span></div>
         <div class="service-card__glow"></div>
       </article>
 
       <article class="service-card reveal-up" style="--i:4">
         <div class="service-card__num">05</div>
-        <span class="service-card__emoji">🔥</span>
+        <div class="icon-box ib--orange icon-box--lg"><i data-lucide="database"></i></div>
         <h3>Firebase &amp; APIs</h3>
         <p>Auth, Firestore, storage, admin flows, payment integration, and realtime features.</p>
-        <div class="service-card__tags">
-          <span>Auth</span>
-          <span>Payments</span>
-        </div>
+        <div class="service-card__tags"><span>Auth</span><span>Payments</span></div>
         <div class="service-card__glow"></div>
       </article>
 
+      <!-- Large card: UI/UX -->
       <article class="service-card service-card--large reveal-up" style="--i:5">
         <div class="service-card__num">06</div>
-        <div class="service-card__icon-wrap">
-          <span class="service-card__emoji">🎨</span>
-        </div>
-        <h3>UI / UX Design</h3>
-        <p>Clean interfaces, premium visuals, smooth motion, and product screens that feel easy to use.</p>
-        <div class="service-card__tags">
-          <span>Figma</span>
-          <span>Animations</span>
-          <span>Responsive</span>
+        <div class="icon-box ib--pink icon-box--xl"><i data-lucide="palette"></i></div>
+        <div>
+          <h3>UI / UX Design</h3>
+          <p>Clean interfaces, premium visuals, smooth motion, and product screens that feel easy to use.</p>
+          <div class="service-card__tags"><span>Figma</span><span>Animations</span><span>Responsive</span></div>
         </div>
         <div class="service-card__glow"></div>
       </article>
     </div>
   </section>
 
-  <!-- Projects -->
+  <!-- ─── Projects ─── -->
   <section id="projects" class="section projects">
     <div class="section-label reveal-up">
       <span class="section-label__line"></span>
       <span class="section-label__text">Selected Work</span>
     </div>
-
     <div class="section__head reveal-up">
-      <h2 class="section__title">Featured projects &amp; <em>client work</em>.</h2>
+      <h2 class="section__title">11+ projects &amp; <em>client work</em>.</h2>
     </div>
 
     <div class="projects__grid">
 
+      <!-- Featured Hero -->
       <article class="project-card project-card--hero reveal-up" style="--i:0">
         <div class="project-card__header">
-          <span class="project-tag project-tag--featured">⭐ Featured</span>
-          <div class="project-card__tags">
-            <span>Flutter</span><span>Firebase</span><span>AI</span>
-          </div>
+          <span class="project-tag project-tag--featured"><i data-lucide="star" style="width:12px;height:12px;display:inline-block;vertical-align:-1px;margin-right:3px;"></i> Featured</span>
+          <div class="project-card__tags"><span>Flutter</span><span>Firebase</span><span>AI</span></div>
         </div>
         <div class="project-card__body">
-          <div class="project-card__icon">💰</div>
+          <div class="icon-box ib--purple icon-box--xl project-icon"><i data-lucide="wallet"></i></div>
           <h3>Spendly AI</h3>
           <p>AI-powered personal finance companion with smart spending insights, dashboard charts, and real-time budget tracking.</p>
         </div>
-        <div class="project-card__footer">
-          <span class="project-num">#07</span>
-        </div>
+        <div class="project-card__footer"><span class="project-num">#07</span></div>
         <div class="project-card__glow"></div>
       </article>
 
+      <!-- Row 2: 3 cards -->
       <article class="project-card reveal-up" style="--i:1">
-        <div class="project-card__header">
-          <div class="project-card__tags">
-            <span>AI Video</span><span>Fiverr</span><span>Upwork</span>
-          </div>
-        </div>
+        <div class="project-card__header"><div class="project-card__tags"><span>Flutter</span><span>Firebase</span></div></div>
         <div class="project-card__body">
-          <div class="project-card__icon">🎬</div>
-          <h3>AI Video Generation Work</h3>
-          <p>Client-focused AI video creation for promotional content, social media, product presentation, and creative storytelling.</p>
+          <div class="icon-box ib--orange project-icon"><i data-lucide="utensils"></i></div>
+          <h3>FoodFlow Delivery App</h3>
+          <p>Full-stack food delivery Flutter app with real-time order tracking, restaurant dashboard, and payment integration.</p>
         </div>
-        <span class="project-num">#01</span>
+        <span class="project-num">#08</span>
         <div class="project-card__glow"></div>
       </article>
 
       <article class="project-card reveal-up" style="--i:2">
-        <div class="project-card__header">
-          <div class="project-card__tags">
-            <span>Telegram</span><span>Bot</span><span>Mini App</span>
-          </div>
-        </div>
+        <div class="project-card__header"><div class="project-card__tags"><span>Flutter</span><span>API</span></div></div>
         <div class="project-card__body">
-          <div class="project-card__icon">✈️</div>
-          <h3>Telegram Bots &amp; Mini Apps</h3>
-          <p>Custom bots and mini apps for demos, reward systems, and automation. Includes <a class="inline-link" href="https://t.me/Amazing_tools_bot" target="_blank" rel="noreferrer">@Amazing_tools_bot</a> and <a class="inline-link" href="https://t.me/Fifa2026Predict_win_rewards_bot" target="_blank" rel="noreferrer">@Fifa2026Predict</a>.</p>
+          <div class="icon-box ib--amber project-icon"><i data-lucide="coins"></i></div>
+          <h3>CryptoWatch Tracker</h3>
+          <p>Live cryptocurrency portfolio tracker with price charts, market alerts, and multi-wallet support.</p>
         </div>
-        <span class="project-num">#02</span>
+        <span class="project-num">#09</span>
         <div class="project-card__glow"></div>
       </article>
 
       <article class="project-card reveal-up" style="--i:3">
+        <div class="project-card__header"><div class="project-card__tags"><span>Flutter</span><span>AI</span></div></div>
+        <div class="project-card__body">
+          <div class="icon-box ib--pink project-icon"><i data-lucide="brain"></i></div>
+          <h3>TaskMind AI Planner</h3>
+          <p>AI-powered task management app with smart prioritization, habit tracking, and productivity insights.</p>
+        </div>
+        <span class="project-num">#10</span>
+        <div class="project-card__glow"></div>
+      </article>
+
+      <!-- Row 3: Full width 2nd featured -->
+      <article class="project-card project-card--hero reveal-up" style="--i:4">
         <div class="project-card__header">
-          <div class="project-card__tags">
-            <span>TON</span><span>Blockchain</span>
-          </div>
+          <span class="project-tag project-tag--featured"><i data-lucide="star" style="width:12px;height:12px;display:inline-block;vertical-align:-1px;margin-right:3px;"></i> Featured</span>
+          <div class="project-card__tags"><span>Telegram</span><span>Bot</span><span>Mini App</span></div>
         </div>
         <div class="project-card__body">
-          <div class="project-card__icon">⛓️</div>
-          <h3>TON / Blockchain Bot Features</h3>
-          <p>Telegram bot features connecting with TON blockchain — user rewards, wallet-aware flows, and custom on-chain logic.</p>
+          <div class="icon-box ib--blue icon-box--xl project-icon"><i data-lucide="bot"></i></div>
+          <h3>Telegram Bots &amp; Mini Apps</h3>
+          <p>Custom bots and mini apps for demos, reward systems, and automation. Includes <a class="inline-link" href="https://t.me/Amazing_tools_bot" target="_blank" rel="noreferrer">@Amazing_tools_bot</a> and <a class="inline-link" href="https://t.me/Fifa2026Predict_win_rewards_bot" target="_blank" rel="noreferrer">@Fifa2026Predict</a>.</p>
+        </div>
+        <div class="project-card__footer"><span class="project-num">#02</span></div>
+        <div class="project-card__glow"></div>
+      </article>
+
+      <!-- Row 4: 3 cards -->
+      <article class="project-card reveal-up" style="--i:5">
+        <div class="project-card__header"><div class="project-card__tags"><span>TON</span><span>Blockchain</span></div></div>
+        <div class="project-card__body">
+          <div class="icon-box ib--purple project-icon"><i data-lucide="link-2"></i></div>
+          <h3>TON Blockchain Features</h3>
+          <p>Telegram bot features with TON blockchain — user rewards, wallet-aware flows, and custom on-chain logic.</p>
         </div>
         <span class="project-num">#03</span>
         <div class="project-card__glow"></div>
       </article>
 
-      <article class="project-card reveal-up" style="--i:4">
-        <div class="project-card__header">
-          <div class="project-card__tags">
-            <span>Flutter</span><span>School</span>
-          </div>
-        </div>
+      <article class="project-card reveal-up" style="--i:6">
+        <div class="project-card__header"><div class="project-card__tags"><span>Flutter</span><span>School</span></div></div>
         <div class="project-card__body">
-          <div class="project-card__icon">🏫</div>
-          <h3>UPSC School Management App</h3>
+          <div class="icon-box ib--green project-icon"><i data-lucide="graduation-cap"></i></div>
+          <h3>UPSC School Management</h3>
           <p>School management app for institutional workflows — student, class, notice, and academic management.</p>
         </div>
         <span class="project-num">#04</span>
         <div class="project-card__glow"></div>
       </article>
 
-      <article class="project-card reveal-up" style="--i:5">
-        <div class="project-card__header">
-          <div class="project-card__tags">
-            <span>Ecommerce</span><span>Courses</span>
-          </div>
-        </div>
+      <article class="project-card reveal-up" style="--i:7">
+        <div class="project-card__header"><div class="project-card__tags"><span>Flutter</span><span>Dart</span></div></div>
         <div class="project-card__body">
-          <div class="project-card__icon">🛒</div>
+          <div class="icon-box ib--cyan project-icon"><i data-lucide="music"></i></div>
+          <h3>MusicWave Streaming</h3>
+          <p>Premium music streaming app UI with playlist management, waveform player, and social sharing features.</p>
+        </div>
+        <span class="project-num">#11</span>
+        <div class="project-card__glow"></div>
+      </article>
+
+      <!-- Row 5: 3 cards -->
+      <article class="project-card reveal-up" style="--i:8">
+        <div class="project-card__header"><div class="project-card__tags"><span>AI Video</span><span>Fiverr</span></div></div>
+        <div class="project-card__body">
+          <div class="icon-box ib--cyan project-icon"><i data-lucide="video"></i></div>
+          <h3>AI Video Generation Work</h3>
+          <p>Client-focused AI video creation for promotional content, social media, and product presentation.</p>
+        </div>
+        <span class="project-num">#01</span>
+        <div class="project-card__glow"></div>
+      </article>
+
+      <article class="project-card reveal-up" style="--i:9">
+        <div class="project-card__header"><div class="project-card__tags"><span>Ecommerce</span><span>Courses</span></div></div>
+        <div class="project-card__body">
+          <div class="icon-box ib--orange project-icon"><i data-lucide="shopping-cart"></i></div>
           <h3>Din Solution BD</h3>
           <p>Full ecommerce and course-selling app with course management, payment flow, and admin-ready structure.</p>
         </div>
@@ -395,15 +392,11 @@
         <div class="project-card__glow"></div>
       </article>
 
-      <article class="project-card reveal-up" style="--i:6">
-        <div class="project-card__header">
-          <div class="project-card__tags">
-            <span>Flutter</span><span>Education</span>
-          </div>
-        </div>
+      <article class="project-card reveal-up" style="--i:10">
+        <div class="project-card__header"><div class="project-card__tags"><span>Flutter</span><span>Education</span></div></div>
         <div class="project-card__body">
-          <div class="project-card__icon">📚</div>
-          <h3>EngLearn — English Learning App</h3>
+          <div class="icon-box ib--blue project-icon"><i data-lucide="book-open"></i></div>
+          <h3>EngLearn English App</h3>
           <p>English learning app with clean lessons, practice flows, and a friendly mobile experience for learners.</p>
         </div>
         <span class="project-num">#06</span>
@@ -413,22 +406,20 @@
     </div>
   </section>
 
-  <!-- Process -->
+  <!-- ─── Process ─── -->
   <section class="section process">
     <div class="section-label reveal-up">
       <span class="section-label__line"></span>
       <span class="section-label__text">My Process</span>
     </div>
-
     <div class="section__head reveal-up">
       <h2 class="section__title">How I work, <em>start to finish</em>.</h2>
     </div>
-
     <div class="process__steps">
       <div class="process__step reveal-up" style="--i:0">
         <div class="process__step-num">01</div>
         <div class="process__step-content">
-          <div class="process__step-icon">🔍</div>
+          <div class="icon-box ib--purple icon-box--lg"><i data-lucide="search"></i></div>
           <h3>Understand</h3>
           <p>Define the problem, the audience, and what success looks like.</p>
         </div>
@@ -437,7 +428,7 @@
       <div class="process__step reveal-up" style="--i:1">
         <div class="process__step-num">02</div>
         <div class="process__step-content">
-          <div class="process__step-icon">🎨</div>
+          <div class="icon-box ib--pink icon-box--lg"><i data-lucide="palette"></i></div>
           <h3>Design</h3>
           <p>Create a UI with strong visual structure, motion, and clarity.</p>
         </div>
@@ -446,7 +437,7 @@
       <div class="process__step reveal-up" style="--i:2">
         <div class="process__step-num">03</div>
         <div class="process__step-content">
-          <div class="process__step-icon">⚙️</div>
+          <div class="icon-box ib--cyan icon-box--lg"><i data-lucide="code-2"></i></div>
           <h3>Build</h3>
           <p>Develop, iterate, and refine until it feels smooth and premium.</p>
         </div>
@@ -455,7 +446,7 @@
       <div class="process__step reveal-up" style="--i:3">
         <div class="process__step-num">04</div>
         <div class="process__step-content">
-          <div class="process__step-icon">🚀</div>
+          <div class="icon-box ib--amber icon-box--lg"><i data-lucide="rocket"></i></div>
           <h3>Ship</h3>
           <p>Launch with confidence — clean code, tested flows, ready to scale.</p>
         </div>
@@ -463,7 +454,75 @@
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- ─── Testimonials ─── -->
+  <section class="section testimonials">
+    <div class="section-label reveal-up">
+      <span class="section-label__line"></span>
+      <span class="section-label__text">Client Reviews</span>
+    </div>
+    <div class="section__head reveal-up">
+      <h2 class="section__title">What clients <em>say about me</em>.</h2>
+    </div>
+    <div class="testimonials__grid">
+
+      <article class="testimonial-card reveal-up" style="--i:0">
+        <div class="testimonial-card__stars">
+          <i data-lucide="star" class="star-filled"></i>
+          <i data-lucide="star" class="star-filled"></i>
+          <i data-lucide="star" class="star-filled"></i>
+          <i data-lucide="star" class="star-filled"></i>
+          <i data-lucide="star" class="star-filled"></i>
+        </div>
+        <p class="testimonial-card__text">"Absolutely stunning AI video! Delivered faster than expected. The quality was incredible — exactly what I needed for my product launch. Will definitely order again!"</p>
+        <div class="testimonial-card__author">
+          <img class="testimonial-card__avatar av--purple" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80" alt="James M." />
+          <div>
+            <strong>James M.</strong>
+            <span>🇺🇸 USA</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="testimonial-card reveal-up" style="--i:1">
+        <div class="testimonial-card__stars">
+          <i data-lucide="star" class="star-filled"></i>
+          <i data-lucide="star" class="star-filled"></i>
+          <i data-lucide="star" class="star-filled"></i>
+          <i data-lucide="star" class="star-filled"></i>
+          <i data-lucide="star" class="star-filled"></i>
+        </div>
+        <p class="testimonial-card__text">"Built our Telegram bot with TON blockchain features perfectly. Communication was excellent — he understood our requirements immediately and delivered clean, working code."</p>
+        <div class="testimonial-card__author">
+          <img class="testimonial-card__avatar av--cyan" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80" alt="Ahmed R." />
+          <div>
+            <strong>Ahmed R.</strong>
+            <span>🇦🇪 UAE</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="testimonial-card reveal-up" style="--i:2">
+        <div class="testimonial-card__stars">
+          <i data-lucide="star" class="star-filled"></i>
+          <i data-lucide="star" class="star-filled"></i>
+          <i data-lucide="star" class="star-filled"></i>
+          <i data-lucide="star" class="star-filled"></i>
+          <i data-lucide="star" class="star-filled"></i>
+        </div>
+        <p class="testimonial-card__text">"The Flutter app exceeded all our expectations. Beautiful UI, clean architecture, and delivered on schedule. Our users absolutely love it. Highly recommend for any mobile project!"</p>
+        <div class="testimonial-card__author">
+          <img class="testimonial-card__avatar av--pink" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80" alt="Sarah K." />
+          <div>
+            <strong>Sarah K.</strong>
+            <span>🇬🇧 UK</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ─── Contact ─── -->
   <section id="contact" class="section contact">
     <div class="contact__bg-text" aria-hidden="true">LET'S TALK</div>
     <div class="contact__inner reveal-up">
@@ -478,61 +537,77 @@
         Available for Flutter apps, AI video generation, Telegram bots,<br />
         mini apps, blockchain bot features, and full product builds.
       </p>
-
       <div class="contact__cards">
         <a class="contact-card contact-card--whatsapp" href="https://wa.me/8801950132764" target="_blank" rel="noreferrer">
-          <div class="contact-card__icon">💬</div>
-          <div>
-            <strong>WhatsApp</strong>
-            <span>Chat directly</span>
-          </div>
-          <span class="contact-card__arrow">↗</span>
+          <div class="contact-card__icon"><i data-lucide="message-circle"></i></div>
+          <div><strong>WhatsApp</strong><span>Chat directly</span></div>
         </a>
-        <a class="contact-card" href="https://www.fiverr.com/s/LdV7zdo" target="_blank" rel="noreferrer">
-          <div class="contact-card__icon">🟢</div>
-          <div>
-            <strong>Fiverr</strong>
-            <span>Order a gig</span>
-          </div>
-          <span class="contact-card__arrow">↗</span>
+        <a class="contact-card contact-card--fiverr" href="https://www.fiverr.com/s/LdV7zdo" target="_blank" rel="noreferrer">
+          <div class="contact-card__icon"><i data-lucide="briefcase"></i></div>
+          <div><strong>Fiverr</strong><span>Order a gig</span></div>
         </a>
-        <a class="contact-card" href="https://upwork.com/freelancers/rakibulhasans8" target="_blank" rel="noreferrer">
-          <div class="contact-card__icon">🟡</div>
-          <div>
-            <strong>Upwork</strong>
-            <span>Hire on platform</span>
-          </div>
-          <span class="contact-card__arrow">↗</span>
+        <a class="contact-card contact-card--upwork" href="https://upwork.com/freelancers/rakibulhasans8" target="_blank" rel="noreferrer">
+          <div class="contact-card__icon"><i data-lucide="handshake"></i></div>
+          <div><strong>Upwork</strong><span>Hire on platform</span></div>
         </a>
-        <a class="contact-card" href="https://github.com/rakibsojib1" target="_blank" rel="noreferrer">
-          <div class="contact-card__icon">⚫</div>
-          <div>
-            <strong>GitHub</strong>
-            <span>See my code</span>
+        <a class="contact-card contact-card--github" href="https://github.com/rakibsojib1" target="_blank" rel="noreferrer">
+          <div class="contact-card__icon">
+            <svg class="contact-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
           </div>
-          <span class="contact-card__arrow">↗</span>
+          <div><strong>GitHub</strong><span>See my code</span></div>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- ─── Footer ─── -->
   <footer class="footer">
     <div class="footer__inner">
       <div class="footer__brand">
-        <div class="nav__logo-mark nav__logo-mark--sm">
-          <span>RS</span>
-        </div>
+        <div class="nav__logo-mark nav__logo-mark--sm"><span>RS</span></div>
         <span>Rakib Sojib</span>
       </div>
       <span class="footer__copy">© <span id="year"></span> · Flutter, AI Video &amp; Telegram Bot Developer · Bangladesh</span>
       <div class="footer__links">
-        <a href="https://github.com/rakibsojib1" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="https://www.fiverr.com/s/LdV7zdo" target="_blank" rel="noreferrer">Fiverr</a>
-        <a href="https://upwork.com/freelancers/rakibulhasans8" target="_blank" rel="noreferrer">Upwork</a>
+        <a href="https://github.com/rakibsojib1"  target="_blank" rel="noreferrer"><i data-lucide="github"></i> GitHub</a>
+        <a href="https://www.fiverr.com/s/LdV7zdo" target="_blank" rel="noreferrer"><i data-lucide="briefcase"></i> Fiverr</a>
+        <a href="https://upwork.com/freelancers/rakibulhasans8" target="_blank" rel="noreferrer"><i data-lucide="handshake"></i> Upwork</a>
       </div>
     </div>
   </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <span class="back-to-top__arrow"><i data-lucide="chevron-up"></i></span>
+    <svg class="back-to-top__ring" viewBox="0 0 44 44" aria-hidden="true">
+      <circle cx="22" cy="22" r="20" fill="none" stroke="rgba(108,99,255,0.15)" stroke-width="2"/>
+      <circle class="back-to-top__progress" cx="22" cy="22" r="20" fill="none"
+        stroke="url(#bttGrad)" stroke-width="2" stroke-linecap="round"
+        stroke-dasharray="125.66" stroke-dashoffset="125.66"/>
+      <defs>
+        <linearGradient id="bttGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#6c63ff"/>
+          <stop offset="100%" stop-color="#22d3ee"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </button>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Mobile navigation">
+    <a href="#home"     class="mobile-nav-item active" data-section="home">
+      <i data-lucide="home" class="mobile-nav-item__icon"></i><span>Home</span>
+    </a>
+    <a href="#about"    class="mobile-nav-item" data-section="about">
+      <i data-lucide="user" class="mobile-nav-item__icon"></i><span>About</span>
+    </a>
+    <a href="#projects" class="mobile-nav-item" data-section="projects">
+      <i data-lucide="briefcase" class="mobile-nav-item__icon"></i><span>Work</span>
+    </a>
+    <a href="#contact"  class="mobile-nav-item" data-section="contact">
+      <i data-lucide="mail" class="mobile-nav-item__icon"></i><span>Contact</span>
+    </a>
+  </nav>
 
   <!-- WhatsApp FAB -->
   <a class="fab" href="https://wa.me/8801950132764" target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp" id="fab">
@@ -540,6 +615,8 @@
     <span class="fab__pulse"></span>
   </a>
 
+  <!-- Lucide Icon CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
   <script src="script.js"></script>
 </body>
 </html>
