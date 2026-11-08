@@ -61,8 +61,8 @@ Portfolio/
 
 1. **Hero** — Heading, profile orb, CTA buttons, animated counters
 2. **About** — Bio, platform links (Fiverr / Upwork / GitHub), feature cards
-3. **Services** — 6 services in bento grid (Flutter, AI Video, Telegram Bots, Blockchain, Firebase, UI/UX)
-4. **Projects** — 7 projects including featured Spendly AI
+3. **Projects** — 12 projects including featured production bots, Google Play apps & EdTech
+4. **Services** — 6 services in bento grid (Flutter, AI Video, Telegram Bots, Blockchain, Firebase, UI/UX)
 5. **Process** — 4-step work process (Understand → Design → Build → Ship)
 6. **Contact** — WhatsApp, Fiverr, Upwork, GitHub cards
 
@@ -70,15 +70,20 @@ Portfolio/
 
 ## 🚀 Projects Showcased
 
-| # | Project | Stack |
-|---|---|---|
-| 01 | AI Video Generation Work | AI Video · Fiverr · Upwork |
-| 02 | Telegram Bots & Mini Apps | Telegram · Bot · Mini App |
-| 03 | TON / Blockchain Bot Features | TON · Blockchain |
-| 04 | UPSC School Management App | Flutter · School |
-| 05 | Din Solution BD | Ecommerce · Courses |
-| 06 | EngLearn English Learning App | Flutter · Education |
-| 07 ⭐ | **Spendly AI** | Flutter · Firebase · AI |
+| # | Project | Stack | Status |
+|---|---|---|---|
+| 01 ⭐ | **Tools BD Bot (@tools_bd_bot)** | Aiogram 3 · SQLite · Bunny API · Automated Payments | 🟢 Production (Live) |
+| 02 ⭐ | **Flash SMS Bot (@Flashsms7_bot)** | Telegram Bot · Python · OTP Telemetry · Multi-Provider | 🟢 20k+ Users (Live) |
+| 03 📱 | **Spendly AI (Smart Finance & Budget Tracker)** | Flutter · Dart · Firebase · AI Diagnostics | 🟢 Google Play Store (Live) |
+| 04 🧪 | **ToolsBD Mobile App** | Flutter · Dart · REST API · SQLite · Firebase Auth | 🔵 Play Store Closed Testing |
+| 05 🧪 | **PromptVault (AI Prompt Engineering Hub)** | Flutter · Dart · Provider · Hive Storage · AI Prompts | 🔵 Play Store Closed Testing |
+| 06 🚀 | **EngLearn (English from Bangla)** | Flutter · EdTech · Bilingual Tracks · Audio Pronunciation | 🟡 Under Development |
+| 07 | Telegram WebApps & Mini Apps | Telegram · Mini Apps · Web3 | Live Demos |
+| 08 | TON / Blockchain Bot Features | TON · Blockchain · Smart Rewards | Production |
+| 09 | UPSC School Management App | Flutter · School Management | Institutional |
+| 10 | MusicWave Streaming UI | Flutter · Dart · Audio UI | Mobile App |
+| 11 | AI Video Generation Work | AI Video · Fiverr · Upwork | Client Work |
+| 12 | Din Solution BD | Ecommerce · Course Platform | Full Stack |
 
 ---
 
