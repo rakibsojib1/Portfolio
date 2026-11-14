@@ -3,728 +3,648 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Rakib Sojib — Flutter developer, AI video creator & Telegram bot builder from Bangladesh. Building world-class digital products." />
-  <title>Rakib Sojib | Flutter · AI Video · Telegram Bots</title>
+  <meta name="description" content="Rakib Sojib — Flutter developer, Telegram bot engineer & AI video creator from Bangladesh. Shipping Play Store apps and production bots serving 20,000+ users." />
+  <meta name="theme-color" content="#07070a" />
+  <title>Rakib Sojib — Flutter Apps · Telegram Bots · AI</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- Custom Cursor -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-trail" id="cursorTrail"></div>
-  <!-- Scroll Progress Bar -->
-  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
-
-  <!-- Animated BG -->
-  <div class="bg-orbs" aria-hidden="true">
-    <div class="orb orb--1"></div><div class="orb orb--2"></div>
-    <div class="orb orb--3"></div><div class="orb orb--4"></div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <div class="bg" aria-hidden="true">
+    <div class="bg__grid"></div>
+    <div class="bg__aurora bg__aurora--1"></div>
+    <div class="bg__aurora bg__aurora--2"></div>
+    <div class="bg__noise"></div>
   </div>
-  <canvas id="particleCanvas" aria-hidden="true"></canvas>
-  <div class="grid-overlay" aria-hidden="true"></div>
 
-  <!-- ─── Navigation ─── -->
+  <!-- ═════════ NAV ═════════ -->
   <header class="nav" id="nav">
-    <a class="nav__logo" href="#home" aria-label="Rakib Sojib home">
-      <div class="nav__logo-mark">
-        <span>RS</span>
-        <div class="logo-ring"></div>
-      </div>
-      <span class="nav__logo-name">Rakib Sojib</span>
-    </a>
-    <nav class="nav__links" id="navMenu" aria-label="Primary navigation">
-      <a href="#about"    class="nav__link">About</a>
-      <a href="#projects" class="nav__link">Projects</a>
-      <a href="#services" class="nav__link">Services</a>
-      <a href="#contact"  class="nav__link">Contact</a>
-    </nav>
-    <div class="nav__actions">
-      <button class="music-toggle" id="musicToggle" aria-label="Toggle ambient music" type="button">
-        <span class="music-toggle__icon" id="musicIconContainer">
-          <i id="musicIcon" data-lucide="music"></i>
-        </span>
-      </button>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" type="button">
-        <span class="theme-toggle__icon" id="themeIconContainer">
-          <i id="themeIcon" data-lucide="moon"></i>
-        </span>
-      </button>
-      <a class="btn btn--glow" href="https://wa.me/8801950132764" target="_blank" rel="noreferrer">
-        <span class="btn__text">Hire Me</span>
-        <span class="btn__shine"></span>
+    <div class="nav__inner">
+      <a class="logo" href="#home" aria-label="Rakib Sojib — home">
+        <span class="logo__mark">RS</span>
+        <span class="logo__name">Rakib Sojib</span>
       </a>
-      <button class="hamburger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#about" class="nav__link">About</a>
+        <a href="#projects" class="nav__link">Projects</a>
+        <a href="#services" class="nav__link">Services</a>
+        <a href="#contact" class="nav__link">Contact</a>
+      </nav>
+
+      <div class="nav__actions">
+        <button class="icon-btn" id="musicToggle" type="button" aria-label="Toggle ambient music">
+          <i data-lucide="music" class="i-off"></i>
+          <i data-lucide="volume-2" class="i-on"></i>
+        </button>
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle theme">
+          <i data-lucide="moon" class="i-dark"></i>
+          <i data-lucide="sun" class="i-light"></i>
+        </button>
+        <a class="btn btn--primary btn--sm nav__cta" href="https://wa.me/8801950132764" target="_blank" rel="noreferrer">
+          Hire me <i data-lucide="arrow-up-right"></i>
+        </a>
+      </div>
     </div>
   </header>
 
-  <!-- ─── Hero ─── -->
-  <section class="hero" id="home">
-    <div class="hero__content">
-      <div class="status-badge reveal-up">
-        <span class="status-badge__dot"></span>
-        <span>Open for freelance — Available now</span>
-      </div>
-      <h1 class="hero__heading">
-        <span class="reveal-line">I Build Apps,</span>
-        <span class="reveal-line gradient-text">AI Experiences</span>
-        <span class="reveal-line">&amp; Bots That Win.</span>
-      </h1>
-      <p class="hero__sub reveal-fade">
-        Flutter developer &amp; AI creator from Bangladesh — crafting
-        <span class="tw-wrap"><span id="typewriter" class="tw-text">polished mobile apps</span></span>
-        for global clients.
-      </p>
-      <div class="hero__btns reveal-fade">
-        <a class="btn btn--glow" href="#projects">
-          <i data-lucide="zap"></i>
-          <span class="btn__text">View My Work</span>
-          <span class="btn__shine"></span>
-        </a>
-        <a class="btn btn--ghost" href="https://www.fiverr.com/s/LdV7zdo" target="_blank" rel="noreferrer">
-          <i data-lucide="briefcase"></i> Fiverr
-        </a>
-        <a class="btn btn--ghost" href="https://upwork.com/freelancers/rakibulhasans8" target="_blank" rel="noreferrer">
-          <i data-lucide="handshake"></i> Upwork
-        </a>
-      </div>
-      <div class="hero__counters reveal-fade">
-        <div class="counter">
-          <span class="counter__num" data-target="12">0</span><span class="counter__plus">+</span>
-          <span class="counter__label">Projects Done</span>
-        </div>
-        <div class="counter-divider"></div>
-        <div class="counter">
-          <span class="counter__num" data-target="100">0</span><span class="counter__plus">%</span>
-          <span class="counter__label">Satisfaction</span>
-        </div>
-        <div class="counter-divider"></div>
-        <div class="counter">
-          <span class="counter__text">AI</span>
-          <span class="counter__label">Video Creator</span>
-        </div>
-      </div>
-    </div>
+  <main>
 
-    <div class="hero__visual reveal-scale">
-      <div class="profile-orb">
-        <div class="profile-orb__ring ring-1"></div>
-        <div class="profile-orb__ring ring-2"></div>
-        <div class="profile-orb__ring ring-3"></div>
-        <div class="profile-orb__img-wrap">
-          <img src="assets/profile.jpg" alt="Rakib Sojib" class="profile-orb__img" width="280" height="280" />
-        </div>
-        <div class="float-chip chip--flutter">
-          <i data-lucide="smartphone" class="chip__icon"></i><span>Flutter</span>
-        </div>
-        <div class="float-chip chip--ai">
-          <i data-lucide="wand-2" class="chip__icon"></i><span>AI Video</span>
-        </div>
-        <div class="float-chip chip--tg">
-          <i data-lucide="send" class="chip__icon"></i><span>Telegram</span>
-        </div>
-        <div class="float-chip chip--bd">
-          <i data-lucide="map-pin" class="chip__icon"></i><span>Bangladesh</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero__scroll-hint" aria-hidden="true">
-      <div class="scroll-line"></div>
-      <span>Scroll</span>
-    </div>
-  </section>
-
-  <!-- ─── About ─── -->
-  <section id="about" class="section about">
-    <div class="section-label reveal-up">
-      <span class="section-label__line"></span>
-      <span class="section-label__text">About Me</span>
-    </div>
-    <div class="about__grid">
-      <div class="about__text reveal-up">
-        <h2 class="section__title">Turning ideas into<br /><em>digital reality</em> since day one.</h2>
-        <p>I work across Flutter apps, AI video generation, Telegram bots, mini apps, and automation. My focus is simple: turn a client idea into something polished, useful, and ready to show.</p>
-        <p>I have worked with buyers through Fiverr and Upwork, creating AI video content and product experiences that help clients get better attention, stronger presentation, and practical results.</p>
-        <div class="about__links">
-          <a class="platform-link platform-link--fiverr" href="https://www.fiverr.com/s/LdV7zdo" target="_blank" rel="noreferrer">
-            <svg class="platform-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M22.624 11.232H17.48v-2.316c0-.986.726-1.188 1.19-1.188h2.646V2.68H17.48c-3.56 0-5.148 2.05-5.148 4.96v3.592H9.2v5.044h3.132V24H17.48V16.28h4.096l1.048-5.048z"/></svg>
-            <div><strong>Fiverr</strong><span>Client Orders</span></div>
+    <!-- ═════════ HERO ═════════ -->
+    <section class="hero" id="home">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <a class="pill" href="#contact" data-reveal>
+            <span class="pill__dot"></span>
+            Available for freelance — Nov 2026
+            <i data-lucide="arrow-right"></i>
           </a>
-          <a class="platform-link platform-link--upwork" href="https://upwork.com/freelancers/rakibulhasans8" target="_blank" rel="noreferrer">
-            <svg class="platform-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.56 1.83c-2.89 0-5.11 2.22-5.11 5.11v2.18c-1.39-1.89-2.58-4.08-3.37-6.28H6.55v6.55c0 1.79-1.46 3.25-3.25 3.25S.05 11.18.05 9.39V2.84H0v6.55c0 3.6 2.92 6.52 6.52 6.52s6.52-2.92 6.52-6.52V8.98c.63 1.29 1.48 2.58 2.45 3.73l-1.86 8.45h3.6l1.24-5.69c1.68.74 3.56 1.15 5.56 1.15 2.89 0 5.11-2.22 5.11-5.11V1.83h-3.56v9.18c0 1.79-1.46 3.25-3.25 3.25s-3.25-1.46-3.25-3.25V1.83h-.02z"/></svg>
-            <div><strong>Upwork</strong><span>Freelance Work</span></div>
-          </a>
-          <a class="platform-link platform-link--github" href="https://github.com/rakibsojib1" target="_blank" rel="noreferrer">
-            <svg class="platform-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-            <div><strong>GitHub</strong><span>Open Source</span></div>
-          </a>
-        </div>
-      </div>
 
-      <div class="about__cards-wrap">
-        <article class="about-card reveal-up" style="--i:0">
-          <div class="icon-box ib--amber icon-box--lg"><i data-lucide="trophy"></i></div>
-          <h3>Marketplace Experience</h3>
-          <p>Fiverr and Upwork client work, including AI video generation projects and delivered orders.</p>
-        </article>
-        <article class="about-card reveal-up" style="--i:1">
-          <div class="icon-box ib--purple icon-box--lg"><i data-lucide="smartphone"></i></div>
-          <h3>Mobile + Bot Builder</h3>
-          <p>Flutter apps, Telegram bots, mini apps, Firebase, APIs, and payment-ready product flows.</p>
-        </article>
-        <article class="about-card reveal-up" style="--i:2">
-          <div class="icon-box ib--cyan icon-box--lg"><i data-lucide="cpu"></i></div>
-          <h3>AI + Blockchain Ready</h3>
-          <p>AI content workflows and Telegram bots that connect with TON or other blockchain systems.</p>
-        </article>
-      </div>
-    </div>
-  </section>
+          <h1 class="hero__title">
+            <span class="line"><span>I build apps,</span></span>
+            <span class="line"><span><em>AI experiences</em></span></span>
+            <span class="line"><span>&amp; bots that ship.</span></span>
+          </h1>
 
-  <!-- ─── Projects ─── -->
-  <section id="projects" class="section projects">
-    <div class="section-label reveal-up">
-      <span class="section-label__line"></span>
-      <span class="section-label__text">Selected Work</span>
-    </div>
-    <div class="section__head reveal-up">
-      <h2 class="section__title">12+ projects &amp; <em>client work</em>.</h2>
-    </div>
+          <p class="hero__sub" data-reveal style="--d:.35s">
+            Flutter developer &amp; automation engineer from Bangladesh — crafting
+            <span class="tw"><span id="typewriter">Flutter apps</span></span>
+            for clients around the world.
+          </p>
 
-    <div class="projects__grid">
-
-      <!-- Featured Production Hero 1: Tools BD Bot (Automated E-Commerce) -->
-      <article class="project-card project-card--hero project-card--toolsbd reveal-up" style="--i:0">
-        <div class="project-card__header">
-          <span class="project-tag project-tag--live"><span class="live-pulse"></span> Live Production · E-Commerce</span>
-          <div class="project-card__tags">
-            <span>Aiogram 3</span><span>Python</span><span>SQLite</span><span>Bunny API</span><span>Auto Delivery</span><span>bKash / Nagad / USDT</span>
+          <div class="hero__cta" data-reveal style="--d:.45s">
+            <a class="btn btn--primary magnetic" href="#projects">
+              View my work <i data-lucide="arrow-down-right"></i>
+            </a>
+            <a class="btn btn--ghost" href="https://www.fiverr.com/s/LdV7zdo" target="_blank" rel="noreferrer">
+              <i data-lucide="briefcase"></i> Fiverr
+            </a>
+            <a class="btn btn--ghost" href="https://upwork.com/freelancers/rakibulhasans8" target="_blank" rel="noreferrer">
+              <i data-lucide="handshake"></i> Upwork
+            </a>
           </div>
+
+          <dl class="stats" data-reveal style="--d:.55s">
+            <div class="stat"><dt><span data-count="12">0</span>+</dt><dd>Projects shipped</dd></div>
+            <div class="stat"><dt><span data-count="20">0</span>k+</dt><dd>Bot users served</dd></div>
+            <div class="stat"><dt><span data-count="3">0</span></dt><dd>Play Store apps</dd></div>
+            <div class="stat"><dt><span data-count="100">0</span>%</dt><dd>Client satisfaction</dd></div>
+          </dl>
         </div>
-        <div class="project-card__body">
-          <div class="project-hero__title-row">
-            <div class="icon-box ib--purple icon-box--xl project-icon"><i data-lucide="shopping-bag"></i></div>
-            <div class="project-hero__title-text">
-              <h3>Tools BD — Automated Digital Store &amp; Subscription Bot</h3>
+
+        <div class="hero__visual" data-reveal style="--d:.2s">
+          <div class="portrait" id="portrait">
+            <div class="portrait__frame">
+              <img src="assets/profile.jpg" alt="Rakib Sojib" width="420" height="520" />
+              <div class="portrait__shade"></div>
+              <div class="portrait__tag">
+                <div>
+                  <strong>Rakib Sojib</strong>
+                  <span>Flutter &amp; Bot Engineer</span>
+                </div>
+                <span class="portrait__loc"><i data-lucide="map-pin"></i> BD</span>
+              </div>
+            </div>
+
+            <div class="float float--a" data-depth="18">
+              <span class="float__icon float__icon--green"><i data-lucide="activity"></i></span>
+              <div><strong>20,000+ users</strong><span>Flash SMS Bot · live</span></div>
+            </div>
+            <div class="float float--b" data-depth="-14">
+              <span class="float__icon float__icon--violet"><i data-lucide="play"></i></span>
+              <div><strong>Spendly AI</strong><span>Live on Google Play</span></div>
+            </div>
+            <div class="float float--c" data-depth="10">
+              <i data-lucide="sparkles"></i> Flutter · Python · AI
             </div>
           </div>
-          <p>Fully automated Telegram e-commerce store bot powered by <strong>Aiogram 3 &amp; SQLite</strong>. Features instant wholesale product fulfillment for VPN/Proxy credentials and mobile drive packs via Bunny API, automated multi-channel deposit gateways (bKash, Nagad, Rocket, Binance Pay, USDT BEP20/TRC20), user wallet balances, order tracking, and comprehensive admin dashboard.</p>
-          <div class="project-card__action">
-            <a class="btn btn--sm btn--glow" href="https://t.me/tools_bd_bot" target="_blank" rel="noreferrer">
-              <i data-lucide="send"></i>
-              <span class="btn__text">Open @tools_bd_bot</span>
-              <span class="btn__shine"></span>
-            </a>
-            <span class="project-card__status-text"><i data-lucide="check-circle" style="width:14px;height:14px;color:#4ade80;"></i> Instant Auto Fulfillment</span>
-          </div>
         </div>
-        <div class="project-card__footer"><span class="project-num">#01 · Production</span></div>
-        <div class="project-card__glow"></div>
-      </article>
+      </div>
 
-      <!-- Featured Production Hero 2: Flash SMS Bot (20k+ Users) -->
-      <article class="project-card project-card--hero project-card--flash reveal-up" style="--i:1">
-        <div class="project-card__header">
-          <span class="project-tag project-tag--live"><span class="live-pulse"></span> 20k+ Users · Live Production</span>
-          <div class="project-card__tags">
-            <span>Telegram Bot</span><span>Python</span><span>OTP Telemetry</span><span>Multi-Provider</span><span>Auto Payouts</span>
-          </div>
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <span>Flutter</span><span>Dart</span><span>Firebase</span><span>Python</span><span>Aiogram 3</span><span>Telegram Mini Apps</span><span>TON Blockchain</span><span>SQLite</span><span>REST APIs</span><span>AI Video</span><span>Figma</span><span>Linux VPS</span>
+          <span>Flutter</span><span>Dart</span><span>Firebase</span><span>Python</span><span>Aiogram 3</span><span>Telegram Mini Apps</span><span>TON Blockchain</span><span>SQLite</span><span>REST APIs</span><span>AI Video</span><span>Figma</span><span>Linux VPS</span>
         </div>
-        <div class="project-card__body">
-          <div class="project-hero__title-row">
-            <div class="icon-box ib--cyan icon-box--xl project-icon"><i data-lucide="zap"></i></div>
-            <div class="project-hero__title-text">
-              <h3>Flash SMS Bot — High-Scale OTP &amp; Number System</h3>
+      </div>
+    </section>
+
+    <!-- ═════════ ABOUT ═════════ -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="sec-head" data-reveal>
+          <span class="eyebrow"><b>01</b> About</span>
+          <h2 class="sec-title">Turning ideas into <em>digital reality</em>.</h2>
+        </div>
+
+        <div class="bento">
+          <article class="card spot bento__intro" data-reveal>
+            <p class="lead">I work across <strong>Flutter apps</strong>, <strong>Telegram bots</strong>, mini apps, AI video and automation. My focus is simple: turn a client's idea into something polished, useful and ready to ship.</p>
+            <p>I've delivered work for buyers on Fiverr and Upwork, built production bots running 24/7 on cloud VPS, and published apps on Google Play — handling everything from UI design to payments and deployment.</p>
+            <div class="platforms">
+              <a class="platform" href="https://www.fiverr.com/s/LdV7zdo" target="_blank" rel="noreferrer">
+                <span class="platform__icon platform__icon--fiverr"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.624 11.232H17.48v-2.316c0-.986.726-1.188 1.19-1.188h2.646V2.68H17.48c-3.56 0-5.148 2.05-5.148 4.96v3.592H9.2v5.044h3.132V24H17.48V16.28h4.096l1.048-5.048z"/></svg></span>
+                <span><strong>Fiverr</strong><small>Client orders</small></span>
+                <i data-lucide="arrow-up-right"></i>
+              </a>
+              <a class="platform" href="https://upwork.com/freelancers/rakibulhasans8" target="_blank" rel="noreferrer">
+                <span class="platform__icon platform__icon--upwork"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.56 1.83c-2.89 0-5.11 2.22-5.11 5.11v2.18c-1.39-1.89-2.58-4.08-3.37-6.28H6.55v6.55c0 1.79-1.46 3.25-3.25 3.25S.05 11.18.05 9.39V2.84H0v6.55c0 3.6 2.92 6.52 6.52 6.52s6.52-2.92 6.52-6.52V8.98c.63 1.29 1.48 2.58 2.45 3.73l-1.86 8.45h3.6l1.24-5.69c1.68.74 3.56 1.15 5.56 1.15 2.89 0 5.11-2.22 5.11-5.11V1.83h-3.56v9.18c0 1.79-1.46 3.25-3.25 3.25s-3.25-1.46-3.25-3.25V1.83h-.02z"/></svg></span>
+                <span><strong>Upwork</strong><small>Freelance work</small></span>
+                <i data-lucide="arrow-up-right"></i>
+              </a>
+              <a class="platform" href="https://github.com/rakibsojib1" target="_blank" rel="noreferrer">
+                <span class="platform__icon platform__icon--github"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span>
+                <span><strong>GitHub</strong><small>Open source</small></span>
+                <i data-lucide="arrow-up-right"></i>
+              </a>
             </div>
-          </div>
-          <p>High-concurrency production Telegram bot serving <strong>20,000+ active users</strong>. Engineered with multi-provider SIM pooling (Voltx, Zenex, Stex), real-time phone number allocation across 50+ countries, live 10-minute traffic telemetry, user referral &amp; balance system, and automated withdrawal management running 24/7 on Ubuntu VPS.</p>
-          <div class="project-card__action">
-            <a class="btn btn--sm btn--glow" href="https://t.me/Flashsms7_bot" target="_blank" rel="noreferrer">
-              <i data-lucide="send"></i>
-              <span class="btn__text">Open @Flashsms7_bot</span>
-              <span class="btn__shine"></span>
-            </a>
-            <span class="project-card__status-text"><i data-lucide="activity" style="width:14px;height:14px;color:#4ade80;"></i> Running 24/7 on Cloud VPS</span>
-          </div>
-        </div>
-        <div class="project-card__footer"><span class="project-num">#02 · Production</span></div>
-        <div class="project-card__glow"></div>
-      </article>
+          </article>
 
-      <!-- Featured Hero 3: Spendly AI (Live on Google Play Store) -->
-      <article class="project-card project-card--hero project-card--spendly reveal-up" style="--i:2">
-        <div class="project-card__header">
-          <span class="project-tag project-tag--live"><span class="live-pulse"></span> Live on Google Play · Production</span>
-          <div class="project-card__tags">
-            <span>Flutter</span><span>Dart</span><span>Firebase</span><span>AI Diagnostics</span><span>Budget Tracking</span><span>Material 3</span>
+          <article class="card spot bento__stat" data-reveal style="--d:.08s">
+            <span class="bento__label">Production bots</span>
+            <strong class="bento__big">20k<sup>+</sup></strong>
+            <p>Active users across live Telegram bots, running 24/7.</p>
+          </article>
+
+          <article class="card spot bento__stat" data-reveal style="--d:.14s">
+            <span class="bento__label">Google Play</span>
+            <strong class="bento__big">3</strong>
+            <p>Apps — 1 in production, 2 in closed testing.</p>
+          </article>
+
+          <article class="card spot bento__loc" data-reveal style="--d:.2s">
+            <div class="globe" aria-hidden="true"><span></span></div>
+            <span class="bento__label">Based in</span>
+            <strong>Gazipur, Bangladesh</strong>
+            <p class="clock"><i data-lucide="clock"></i> <span id="localTime">--:--</span> · GMT+6</p>
+          </article>
+
+          <article class="card spot bento__avail" data-reveal style="--d:.26s">
+            <span class="bento__label"><span class="pill__dot"></span> Open to work</span>
+            <strong>Got a project in mind?</strong>
+            <a class="btn btn--primary btn--sm" href="#contact">Let's talk <i data-lucide="arrow-right"></i></a>
+          </article>
+
+          <div class="bento__caps">
+            <article class="card spot cap" data-reveal>
+              <span class="cap__icon"><i data-lucide="trophy"></i></span>
+              <h3>Marketplace experience</h3>
+              <p>Fiverr and Upwork client work, including AI video projects and delivered orders.</p>
+            </article>
+            <article class="card spot cap" data-reveal style="--d:.08s">
+              <span class="cap__icon"><i data-lucide="smartphone"></i></span>
+              <h3>Mobile + bot builder</h3>
+              <p>Flutter apps, Telegram bots, mini apps, Firebase, APIs and payment-ready flows.</p>
+            </article>
+            <article class="card spot cap" data-reveal style="--d:.16s">
+              <span class="cap__icon"><i data-lucide="cpu"></i></span>
+              <h3>AI + blockchain ready</h3>
+              <p>AI content workflows and bots that connect with TON and other chains.</p>
+            </article>
           </div>
         </div>
-        <div class="project-card__body">
-          <div class="project-hero__title-row">
-            <div class="icon-box ib--green icon-box--xl project-icon"><i data-lucide="wallet"></i></div>
-            <div class="project-hero__title-text">
+      </div>
+    </section>
+
+    <!-- ═════════ PROJECTS ═════════ -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="sec-head sec-head--split" data-reveal>
+          <div>
+            <span class="eyebrow"><b>02</b> Selected work</span>
+            <h2 class="sec-title">Shipped, live &amp; <em>in people's hands</em>.</h2>
+          </div>
+          <p class="sec-sub">12+ projects across production Telegram bots, Google Play apps and client work. Here are the ones I'm proudest of.</p>
+        </div>
+
+        <div class="features">
+
+          <!-- 01 — Tools BD Bot -->
+          <article class="feature" style="--accent:168 85 247" data-reveal>
+            <div class="feature__copy">
+              <div class="feature__meta">
+                <span class="badge badge--live"><span class="badge__dot"></span>Live production</span>
+                <span class="feature__num">01 / E-commerce bot</span>
+              </div>
+              <h3>Tools BD — Automated Digital Store Bot</h3>
+              <p>A fully automated Telegram store built on <strong>Aiogram 3 &amp; SQLite</strong>. Instant delivery of VPN/proxy credentials and drive packs via Bunny API, multi-channel deposits (bKash, Nagad, Rocket, Binance Pay, USDT), user wallets, order tracking and a complete admin dashboard.</p>
+              <ul class="tags"><li>Aiogram 3</li><li>Python</li><li>SQLite</li><li>Bunny API</li><li>bKash / Nagad / USDT</li></ul>
+              <div class="feature__actions">
+                <a class="btn btn--primary btn--sm" href="https://t.me/tools_bd_bot" target="_blank" rel="noreferrer"><i data-lucide="send"></i> Open @tools_bd_bot</a>
+                <span class="note"><i data-lucide="check-circle-2"></i> Instant auto-fulfilment</span>
+              </div>
+            </div>
+            <div class="feature__visual">
+              <div class="tg">
+                <div class="tg__head">
+                  <span class="tg__avatar" style="background:linear-gradient(135deg,#a855f7,#ec4899)">TB</span>
+                  <div><strong>Tools BD</strong><small>bot</small></div>
+                </div>
+                <div class="tg__body">
+                  <div class="msg msg--out">/start</div>
+                  <div class="msg msg--in">👋 Welcome to <b>Tools BD</b>!<br />Wallet balance: <b>৳ 1,240</b><br />Choose an option:</div>
+                  <div class="tg__kb"><span>🛒 Shop</span><span>💰 Deposit</span><span>📦 My orders</span><span>👤 Profile</span></div>
+                  <div class="msg msg--in msg--ok">✅ Order #4821 delivered instantly</div>
+                </div>
+              </div>
+              <div class="chip-float chip-float--tr"><i data-lucide="zap"></i> Auto delivery</div>
+            </div>
+          </article>
+
+          <!-- 02 — Flash SMS -->
+          <article class="feature" style="--accent:34 211 238" data-reveal>
+            <div class="feature__copy">
+              <div class="feature__meta">
+                <span class="badge badge--live"><span class="badge__dot"></span>20k+ users</span>
+                <span class="feature__num">02 / OTP platform</span>
+              </div>
+              <h3>Flash SMS Bot — High-scale OTP &amp; Number System</h3>
+              <p>A high-concurrency Telegram bot serving <strong>20,000+ active users</strong>. Multi-provider SIM pooling (Voltx, Zenex, Stex), real-time number allocation across 50+ countries, live traffic telemetry, referral &amp; balance system and automated withdrawals — 24/7 on an Ubuntu VPS.</p>
+              <ul class="tags"><li>Python</li><li>Asyncio</li><li>Multi-provider APIs</li><li>Telemetry</li><li>Auto payouts</li></ul>
+              <div class="feature__actions">
+                <a class="btn btn--primary btn--sm" href="https://t.me/Flashsms7_bot" target="_blank" rel="noreferrer"><i data-lucide="send"></i> Open @Flashsms7_bot</a>
+                <span class="note"><i data-lucide="activity"></i> Running 24/7 on cloud VPS</span>
+              </div>
+            </div>
+            <div class="feature__visual">
+              <div class="tg">
+                <div class="tg__head">
+                  <span class="tg__avatar" style="background:linear-gradient(135deg,#06b6d4,#3b82f6)">⚡</span>
+                  <div><strong>Flash SMS</strong><small>bot</small></div>
+                </div>
+                <div class="tg__body">
+                  <div class="msg msg--out">/number</div>
+                  <div class="msg msg--in">🌍 Select a country:</div>
+                  <div class="tg__kb"><span>USA</span><span>United Kingdom</span><span>Indonesia</span><span>Brazil</span></div>
+                  <div class="msg msg--in">📱 +1 202 555 0147<br /><span class="typing">Waiting for SMS<i></i><i></i><i></i></span></div>
+                  <div class="msg msg--in msg--ok">🔐 OTP received: <b>482913</b></div>
+                </div>
+              </div>
+              <div class="chip-float chip-float--bl"><i data-lucide="users"></i> 20,000+ users</div>
+            </div>
+          </article>
+
+          <!-- 03 — Spendly AI -->
+          <article class="feature" style="--accent:52 211 153" data-reveal>
+            <div class="feature__copy">
+              <div class="feature__meta">
+                <span class="badge badge--live"><span class="badge__dot"></span>Live on Google Play</span>
+                <span class="feature__num">03 / Mobile app</span>
+              </div>
               <h3>Spendly AI — Smart Finance &amp; Budget Tracker</h3>
+              <p>A complete personal finance app published on <strong>Google Play</strong>. AI spending diagnostics, interactive dashboards, monthly budgets, offline-first caching and a secure Firebase backend for auth and expense categorisation — wrapped in a smooth 60fps UI.</p>
+              <ul class="tags"><li>Flutter</li><li>Dart</li><li>Firebase</li><li>AI insights</li><li>Material 3</li></ul>
+              <div class="feature__actions">
+                <a class="btn btn--primary btn--sm" href="https://play.google.com/store/apps/details?id=com.spendlyai.app" target="_blank" rel="noreferrer"><i data-lucide="play"></i> Get it on Google Play</a>
+                <span class="note"><i data-lucide="check-circle-2"></i> Production release</span>
+              </div>
             </div>
-          </div>
-          <p>Complete smart personal finance mobile application published live on the <strong>Google Play Store</strong>. Features automated AI spending diagnostics, interactive visual dashboards, custom monthly budgeting tools, reactive state management, offline-first local cache synchronization, and secure Firebase Cloud backend for user authentication and expense categorization.</p>
-          <div class="project-card__action">
-            <a class="btn btn--sm btn--glow" href="https://play.google.com/store/apps/details?id=com.spendlyai.app" target="_blank" rel="noreferrer">
-              <i data-lucide="play"></i>
-              <span class="btn__text">Get on Google Play</span>
-              <span class="btn__shine"></span>
-            </a>
-            <span class="project-card__status-text"><i data-lucide="check-circle" style="width:14px;height:14px;color:#4ade80;"></i> Official Production Release · 60fps UI</span>
-          </div>
-        </div>
-        <div class="project-card__footer"><span class="project-num">#03 · Google Play Store</span></div>
-        <div class="project-card__glow"></div>
-      </article>
+            <div class="feature__visual">
+              <div class="phone">
+                <div class="phone__screen sp">
+                  <div class="app-top"><span>Hi, Rakib 👋</span><span class="app-av"></span></div>
+                  <div class="sp__card">
+                    <small>Total balance</small>
+                    <strong>৳ 48,250</strong>
+                    <div class="sp__row"><span>▲ ৳62.0k in</span><span>▼ ৳13.7k out</span></div>
+                  </div>
+                  <div class="sp__ai"><i data-lucide="sparkles"></i> You spent 12% less on food this week</div>
+                  <div class="sp__chart">
+                    <i style="--h:45%"></i><i style="--h:70%"></i><i style="--h:35%"></i><i style="--h:85%"></i><i style="--h:55%"></i><i style="--h:65%"></i><i style="--h:40%"></i>
+                  </div>
+                  <div class="sp__tx">
+                    <div><b>🍔</b><span>Food</span><em>-৳450</em></div>
+                    <div><b>🚌</b><span>Transport</span><em>-৳120</em></div>
+                    <div><b>💼</b><span>Salary</span><em class="pos">+৳32k</em></div>
+                  </div>
+                </div>
+              </div>
+              <div class="chip-float chip-float--tr"><i data-lucide="star"></i> Google Play</div>
+            </div>
+          </article>
 
-      <!-- Featured Hero 4: ToolsBD Mobile App (Google Play Closed Testing) -->
-      <article class="project-card project-card--hero project-card--toolsbd-app reveal-up" style="--i:3">
-        <div class="project-card__header">
-          <span class="project-tag project-tag--testing"><span class="testing-pulse"></span> Play Store · Closed Testing</span>
-          <div class="project-card__tags">
-            <span>Flutter</span><span>Dart</span><span>REST API</span><span>SQLite</span><span>Firebase Auth</span><span>FCM Alerts</span><span>bKash / Nagad / USDT</span>
-          </div>
-        </div>
-        <div class="project-card__body">
-          <div class="project-hero__title-row">
-            <div class="icon-box ib--cyan icon-box--xl project-icon"><i data-lucide="smartphone"></i></div>
-            <div class="project-hero__title-text">
+          <!-- 04 — ToolsBD App -->
+          <article class="feature" style="--accent:96 165 250" data-reveal>
+            <div class="feature__copy">
+              <div class="feature__meta">
+                <span class="badge badge--test"><span class="badge__dot"></span>Closed testing</span>
+                <span class="feature__num">04 / Mobile app</span>
+              </div>
               <h3>ToolsBD App — Digital Store &amp; Services Client</h3>
+              <p>The official mobile companion for the <strong>ToolsBD marketplace</strong>. Browse digital utilities, VPN services and subscriptions, top up your wallet, get automated payment verification and instant push alerts via Firebase Cloud Messaging.</p>
+              <ul class="tags"><li>Flutter</li><li>REST API</li><li>SQLite</li><li>Firebase Auth</li><li>FCM</li></ul>
+              <div class="feature__actions">
+                <span class="btn btn--ghost btn--sm is-static"><i data-lucide="flask-conical"></i> Play Store closed testing</span>
+                <span class="note"><i data-lucide="shield-check"></i> AAB build verified</span>
+              </div>
             </div>
-          </div>
-          <p>Official cross-platform mobile application companion for the <strong>ToolsBD digital marketplace</strong>, enabling seamless browsing of digital utilities, VPN services, and subscriptions. Integrated live wallet balance replenishment, automated transaction verification, and instant push alerts using Firebase Cloud Messaging (FCM). Currently deployed in Google Play Store closed testing track.</p>
-          <div class="project-card__action">
-            <span class="btn btn--sm btn--ghost" style="cursor:default;opacity:0.95;border-color:rgba(34,211,238,0.4);color:#22d3ee;">
-              <i data-lucide="flask-conical"></i>
-              <span class="btn__text">Closed Testing Track</span>
-            </span>
-            <span class="project-card__status-text"><i data-lucide="shield-check" style="width:14px;height:14px;color:#22d3ee;"></i> Play Console AAB Build Verified</span>
-          </div>
-        </div>
-        <div class="project-card__footer"><span class="project-num">#04 · Closed Testing</span></div>
-        <div class="project-card__glow"></div>
-      </article>
-
-      <!-- Featured Hero 5: PromptVault (Google Play Closed Testing) -->
-      <article class="project-card project-card--hero project-card--promptvault reveal-up" style="--i:4">
-        <div class="project-card__header">
-          <span class="project-tag project-tag--testing"><span class="testing-pulse"></span> Play Store · Closed Testing</span>
-          <div class="project-card__tags">
-            <span>Flutter</span><span>Dart</span><span>Provider</span><span>Hive Storage</span><span>Prompt Vault</span><span>JSON Export</span>
-          </div>
-        </div>
-        <div class="project-card__body">
-          <div class="project-hero__title-row">
-            <div class="icon-box ib--pink icon-box--xl project-icon"><i data-lucide="sparkles"></i></div>
-            <div class="project-hero__title-text">
-              <h3>PromptVault — AI Prompt Engineering Hub &amp; Vault</h3>
+            <div class="feature__visual">
+              <div class="phone">
+                <div class="phone__screen tb">
+                  <div class="app-top"><span class="tb__logo">Tools<b>BD</b></span><span class="tb__wallet">৳ 1,240</span></div>
+                  <div class="tb__search"><i data-lucide="search"></i> Search VPN, proxy, drive…</div>
+                  <div class="tb__grid">
+                    <div style="--c:#8b5cf6"><b>🛡️</b><span>VPN Premium</span><em>৳199</em></div>
+                    <div style="--c:#06b6d4"><b>🌐</b><span>Proxy</span><em>৳149</em></div>
+                    <div style="--c:#f59e0b"><b>☁️</b><span>Drive 2TB</span><em>৳299</em></div>
+                    <div style="--c:#ec4899"><b>🎨</b><span>Canva Pro</span><em>৳99</em></div>
+                  </div>
+                  <div class="tb__btn">+ Add funds · bKash · Nagad</div>
+                </div>
+              </div>
+              <div class="chip-float chip-float--bl"><i data-lucide="bell"></i> Push alerts</div>
             </div>
-          </div>
-          <p>Intuitive prompt engineering organizer designed for prompt creators and AI practitioners to store, tag, version-control, and test AI prompts across <strong>ChatGPT, Midjourney, and Claude</strong>. Implemented fast full-text indexing, categorized tags, one-tap clipboard copy, and offline database synchronization using lightweight Hive storage. Under active Google Play Store closed testing.</p>
-          <div class="project-card__action">
-            <span class="btn btn--sm btn--ghost" style="cursor:default;opacity:0.95;border-color:rgba(244,114,182,0.4);color:#f472b6;">
-              <i data-lucide="flask-conical"></i>
-              <span class="btn__text">Closed Testing Track</span>
-            </span>
-            <span class="project-card__status-text"><i data-lucide="layers" style="width:14px;height:14px;color:#f472b6;"></i> Google Play Internal Track</span>
-          </div>
-        </div>
-        <div class="project-card__footer"><span class="project-num">#05 · Closed Testing</span></div>
-        <div class="project-card__glow"></div>
-      </article>
+          </article>
 
-      <!-- Featured Hero 6: EngLearn (Under Development) -->
-      <article class="project-card project-card--hero project-card--englearn reveal-up" style="--i:5">
-        <div class="project-card__header">
-          <span class="project-tag project-tag--dev"><span class="dev-pulse"></span> Under Development</span>
-          <div class="project-card__tags">
-            <span>Flutter</span><span>Dart</span><span>Bangla to English</span><span>EdTech</span><span>Bilingual UI</span><span>Audio Trainer</span><span>Quizzes</span>
-          </div>
-        </div>
-        <div class="project-card__body">
-          <div class="project-hero__title-row">
-            <div class="icon-box ib--amber icon-box--xl project-icon"><i data-lucide="book-open"></i></div>
-            <div class="project-hero__title-text">
-              <h3>EngLearn — English Learning Platform from Bangla</h3>
+          <!-- 05 — PromptVault -->
+          <article class="feature" style="--accent:244 114 182" data-reveal>
+            <div class="feature__copy">
+              <div class="feature__meta">
+                <span class="badge badge--test"><span class="badge__dot"></span>Closed testing</span>
+                <span class="feature__num">05 / Mobile app</span>
+              </div>
+              <h3>PromptVault — AI Prompt Engineering Hub</h3>
+              <p>An organiser for prompt creators to store, tag, version and test prompts for <strong>ChatGPT, Midjourney and Claude</strong>. Fast full-text search, categorised tags, one-tap copy and offline sync with lightweight Hive storage.</p>
+              <ul class="tags"><li>Flutter</li><li>Provider</li><li>Hive</li><li>Full-text search</li><li>JSON export</li></ul>
+              <div class="feature__actions">
+                <span class="btn btn--ghost btn--sm is-static"><i data-lucide="flask-conical"></i> Play Store closed testing</span>
+                <span class="note"><i data-lucide="layers"></i> Offline-first</span>
+              </div>
             </div>
+            <div class="feature__visual">
+              <div class="phone">
+                <div class="phone__screen pv">
+                  <div class="app-top"><span>PromptVault</span><span class="pv__add">+</span></div>
+                  <div class="pv__chips"><span class="on">All</span><span>ChatGPT</span><span>Midjourney</span><span>Claude</span></div>
+                  <div class="pv__card"><div><strong>SEO Blog Writer</strong><small style="--c:#10b981">ChatGPT</small></div><i></i><i class="s"></i></div>
+                  <div class="pv__card"><div><strong>Cinematic Portrait</strong><small style="--c:#f472b6">Midjourney</small></div><i></i><i class="s"></i></div>
+                  <div class="pv__card"><div><strong>Code Reviewer</strong><small style="--c:#f59e0b">Claude</small></div><i></i><i class="s"></i></div>
+                </div>
+              </div>
+              <div class="chip-float chip-float--tr"><i data-lucide="copy"></i> One-tap copy</div>
+            </div>
+          </article>
+
+          <!-- 06 — EngLearn -->
+          <article class="feature" style="--accent:251 191 36" data-reveal>
+            <div class="feature__copy">
+              <div class="feature__meta">
+                <span class="badge badge--dev"><span class="badge__dot"></span>In development</span>
+                <span class="feature__num">06 / EdTech</span>
+              </div>
+              <h3>EngLearn — Learn English from Bangla</h3>
+              <p>A bilingual EdTech platform built for native Bangla speakers to learn and speak English naturally — step-by-step grammar paths, real-life dialogues with Bangla explanations, an audio pronunciation coach, flashcards, daily quizzes and gamified progress.</p>
+              <ul class="tags"><li>Flutter</li><li>Dart</li><li>Bilingual UI</li><li>Audio coach</li><li>Quizzes</li></ul>
+              <div class="feature__actions">
+                <span class="btn btn--ghost btn--sm is-static"><i data-lucide="code-2"></i> Active development</span>
+                <span class="note"><i data-lucide="clock"></i> App &amp; web launching soon</span>
+              </div>
+            </div>
+            <div class="feature__visual">
+              <div class="phone">
+                <div class="phone__screen el">
+                  <div class="app-top"><span>EngLearn</span><span class="el__streak">🔥 12</span></div>
+                  <div class="el__prog"><span>Lesson 4</span><i><b style="width:60%"></b></i></div>
+                  <div class="el__card">
+                    <small>Tap to hear</small>
+                    <strong>Apple</strong>
+                    <span>আপেল</span>
+                    <em><i data-lucide="volume-2"></i></em>
+                  </div>
+                  <p class="el__q">Choose the correct meaning</p>
+                  <div class="el__opts"><span>কলা</span><span class="ok">আপেল ✓</span><span>আম</span></div>
+                </div>
+              </div>
+              <div class="chip-float chip-float--bl"><i data-lucide="mic"></i> Pronunciation coach</div>
+            </div>
+          </article>
+        </div>
+
+        <!-- More work -->
+        <div class="more">
+          <h3 class="more__title" data-reveal>More work</h3>
+          <div class="more__grid">
+            <article class="card spot mini" data-reveal>
+              <div class="mini__top"><span class="mini__icon"><i data-lucide="bot"></i></span><span class="mini__num">07</span></div>
+              <h4>Telegram WebApps &amp; Mini Apps</h4>
+              <p>Gamified rewards, predictions and community automation — including <a href="https://t.me/Amazing_tools_bot" target="_blank" rel="noreferrer">@Amazing_tools_bot</a> and <a href="https://t.me/Fifa2026Predict_win_rewards_bot" target="_blank" rel="noreferrer">@Fifa2026Predict</a>.</p>
+              <ul class="tags tags--sm"><li>Mini Apps</li><li>Web3</li></ul>
+            </article>
+            <article class="card spot mini" data-reveal style="--d:.06s">
+              <div class="mini__top"><span class="mini__icon"><i data-lucide="link-2"></i></span><span class="mini__num">08</span></div>
+              <h4>TON Blockchain Features</h4>
+              <p>Bot features on TON — user rewards, wallet-aware flows and custom on-chain logic.</p>
+              <ul class="tags tags--sm"><li>TON</li><li>Blockchain</li></ul>
+            </article>
+            <article class="card spot mini" data-reveal style="--d:.12s">
+              <div class="mini__top"><span class="mini__icon"><i data-lucide="graduation-cap"></i></span><span class="mini__num">09</span></div>
+              <h4>UPSC School Management</h4>
+              <p>Institutional app for students, classes, notices and academic workflows.</p>
+              <ul class="tags tags--sm"><li>Flutter</li><li>Education</li></ul>
+            </article>
+            <article class="card spot mini" data-reveal>
+              <div class="mini__top"><span class="mini__icon"><i data-lucide="music"></i></span><span class="mini__num">10</span></div>
+              <h4>MusicWave Streaming</h4>
+              <p>Premium streaming UI with playlists, a waveform player and social sharing.</p>
+              <ul class="tags tags--sm"><li>Flutter</li><li>Audio UI</li></ul>
+            </article>
+            <article class="card spot mini" data-reveal style="--d:.06s">
+              <div class="mini__top"><span class="mini__icon"><i data-lucide="video"></i></span><span class="mini__num">11</span></div>
+              <h4>AI Video Generation</h4>
+              <p>Client AI videos for promos, social media and product presentations.</p>
+              <ul class="tags tags--sm"><li>AI Video</li><li>Fiverr</li></ul>
+            </article>
+            <article class="card spot mini" data-reveal style="--d:.12s">
+              <div class="mini__top"><span class="mini__icon"><i data-lucide="shopping-cart"></i></span><span class="mini__num">12</span></div>
+              <h4>Din Solution BD</h4>
+              <p>E-commerce and course-selling app with payments and an admin-ready structure.</p>
+              <ul class="tags tags--sm"><li>E-commerce</li><li>Courses</li></ul>
+            </article>
           </div>
-          <p>An interactive bilingual EdTech ecosystem engineered specifically for native Bangla speakers to learn, speak, and master English naturally. Features structured step-by-step grammar paths, real-life conversational dialogues with Bangla explanations, audio pronunciation coach, interactive vocabulary flashcards, daily practice quizzes, and gamified progress tracking. Full-stack Flutter mobile app and interactive web dashboard currently under active development.</p>
-          <div class="project-card__action">
-            <span class="btn btn--sm btn--ghost" style="cursor:default;opacity:0.95;border-color:rgba(251,191,36,0.4);color:#fbbf24;">
-              <i data-lucide="code-2"></i>
-              <span class="btn__text">In Active Development</span>
-            </span>
-            <span class="project-card__status-text"><i data-lucide="clock" style="width:14px;height:14px;color:#fbbf24;"></i> Cross-Platform App &amp; Web Platform Launching Soon</span>
-          </div>
-        </div>
-        <div class="project-card__footer"><span class="project-num">#06 · Development</span></div>
-        <div class="project-card__glow"></div>
-      </article>
-
-      <!-- Row 2: 3 cards -->
-      <article class="project-card reveal-up" style="--i:6">
-        <div class="project-card__header">
-          <div class="project-card__tags"><span>Telegram</span><span>Mini Apps</span><span>Web3</span></div>
-        </div>
-        <div class="project-card__body">
-          <div class="icon-box ib--blue project-icon"><i data-lucide="bot"></i></div>
-          <h3>Telegram WebApps &amp; Mini Apps</h3>
-          <p>Custom Telegram WebApps and interactive mini apps for gamified reward systems, predictions, and community automation. Includes <a class="inline-link" href="https://t.me/Amazing_tools_bot" target="_blank" rel="noreferrer">@Amazing_tools_bot</a> and <a class="inline-link" href="https://t.me/Fifa2026Predict_win_rewards_bot" target="_blank" rel="noreferrer">@Fifa2026Predict</a>.</p>
-        </div>
-        <span class="project-num">#07</span>
-        <div class="project-card__glow"></div>
-      </article>
-
-      <article class="project-card reveal-up" style="--i:7">
-        <div class="project-card__header"><div class="project-card__tags"><span>TON</span><span>Blockchain</span></div></div>
-        <div class="project-card__body">
-          <div class="icon-box ib--purple project-icon"><i data-lucide="link-2"></i></div>
-          <h3>TON Blockchain Features</h3>
-          <p>Telegram bot features with TON blockchain — user rewards, wallet-aware flows, and custom on-chain logic.</p>
-        </div>
-        <span class="project-num">#08</span>
-        <div class="project-card__glow"></div>
-      </article>
-
-      <article class="project-card reveal-up" style="--i:8">
-        <div class="project-card__header"><div class="project-card__tags"><span>Flutter</span><span>School</span></div></div>
-        <div class="project-card__body">
-          <div class="icon-box ib--green project-icon"><i data-lucide="graduation-cap"></i></div>
-          <h3>UPSC School Management</h3>
-          <p>School management app for institutional workflows — student, class, notice, and academic management.</p>
-        </div>
-        <span class="project-num">#09</span>
-        <div class="project-card__glow"></div>
-      </article>
-
-      <!-- Row 3: 3 cards -->
-      <article class="project-card reveal-up" style="--i:9">
-        <div class="project-card__header"><div class="project-card__tags"><span>Flutter</span><span>Dart</span></div></div>
-        <div class="project-card__body">
-          <div class="icon-box ib--cyan project-icon"><i data-lucide="music"></i></div>
-          <h3>MusicWave Streaming</h3>
-          <p>Premium music streaming app UI with playlist management, waveform player, and social sharing features.</p>
-        </div>
-        <span class="project-num">#10</span>
-        <div class="project-card__glow"></div>
-      </article>
-
-      <article class="project-card reveal-up" style="--i:10">
-        <div class="project-card__header"><div class="project-card__tags"><span>AI Video</span><span>Fiverr</span></div></div>
-        <div class="project-card__body">
-          <div class="icon-box ib--cyan project-icon"><i data-lucide="video"></i></div>
-          <h3>AI Video Generation Work</h3>
-          <p>Client-focused AI video creation for promotional content, social media, and product presentation.</p>
-        </div>
-        <span class="project-num">#11</span>
-        <div class="project-card__glow"></div>
-      </article>
-
-      <article class="project-card reveal-up" style="--i:11">
-        <div class="project-card__header"><div class="project-card__tags"><span>Ecommerce</span><span>Courses</span></div></div>
-        <div class="project-card__body">
-          <div class="icon-box ib--orange project-icon"><i data-lucide="shopping-cart"></i></div>
-          <h3>Din Solution BD</h3>
-          <p>Full ecommerce and course-selling app with course management, payment flow, and admin-ready structure.</p>
-        </div>
-        <span class="project-num">#12</span>
-        <div class="project-card__glow"></div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ─── Services ─── -->
-  <section id="services" class="section services">
-    <div class="section-label reveal-up">
-      <span class="section-label__line"></span>
-      <span class="section-label__text">Services</span>
-    </div>
-    <div class="section__head reveal-up">
-      <h2 class="section__title">Everything you need to <em>build and grow</em>.</h2>
-    </div>
-
-    <div class="services__grid">
-      <!-- Large card: Flutter -->
-      <article class="service-card service-card--large reveal-up" style="--i:0">
-        <div class="service-card__num">01</div>
-        <div class="icon-box ib--purple icon-box--xl"><i data-lucide="smartphone"></i></div>
-        <div>
-          <h3>Flutter Apps</h3>
-          <p>Cross-platform mobile apps for ecommerce, education, dashboards, school management, and learning platforms.</p>
-          <div class="service-card__tags"><span>iOS &amp; Android</span><span>Firebase</span><span>APIs</span></div>
-        </div>
-        <div class="service-card__glow"></div>
-      </article>
-
-      <article class="service-card reveal-up" style="--i:1">
-        <div class="service-card__num">02</div>
-        <div class="icon-box ib--cyan icon-box--lg"><i data-lucide="video"></i></div>
-        <h3>AI Video Generation</h3>
-        <p>Creative AI video assets for clients, ads, reels, promos, and social content.</p>
-        <div class="service-card__tags"><span>Ads</span><span>Reels</span></div>
-        <div class="service-card__glow"></div>
-      </article>
-
-      <article class="service-card reveal-up" style="--i:2">
-        <div class="service-card__num">03</div>
-        <div class="icon-box ib--blue icon-box--lg"><i data-lucide="send"></i></div>
-        <h3>Telegram Bots &amp; Automation</h3>
-        <p>High-concurrency production bots, automated e-commerce stores, OTP/SMS gateways, and interactive mini apps.</p>
-        <div class="service-card__tags"><span>Aiogram 3</span><span>Live Production</span><span>Automation</span></div>
-        <div class="service-card__glow"></div>
-      </article>
-
-      <article class="service-card reveal-up" style="--i:3">
-        <div class="service-card__num">04</div>
-        <div class="icon-box ib--amber icon-box--lg"><i data-lucide="link-2"></i></div>
-        <h3>Blockchain Integrations</h3>
-        <p>Telegram bots connected with TON or other blockchain features per project needs.</p>
-        <div class="service-card__tags"><span>TON</span><span>Web3</span></div>
-        <div class="service-card__glow"></div>
-      </article>
-
-      <article class="service-card reveal-up" style="--i:4">
-        <div class="service-card__num">05</div>
-        <div class="icon-box ib--orange icon-box--lg"><i data-lucide="database"></i></div>
-        <h3>Firebase &amp; APIs</h3>
-        <p>Auth, Firestore, storage, admin flows, payment integration, and realtime features.</p>
-        <div class="service-card__tags"><span>Auth</span><span>Payments</span></div>
-        <div class="service-card__glow"></div>
-      </article>
-
-      <!-- Large card: UI/UX -->
-      <article class="service-card service-card--large reveal-up" style="--i:5">
-        <div class="service-card__num">06</div>
-        <div class="icon-box ib--pink icon-box--xl"><i data-lucide="palette"></i></div>
-        <div>
-          <h3>UI / UX Design</h3>
-          <p>Clean interfaces, premium visuals, smooth motion, and product screens that feel easy to use.</p>
-          <div class="service-card__tags"><span>Figma</span><span>Animations</span><span>Responsive</span></div>
-        </div>
-        <div class="service-card__glow"></div>
-      </article>
-    </div>
-  </section>
-
-  <!-- ─── Process ─── -->
-  <section class="section process">
-    <div class="section-label reveal-up">
-      <span class="section-label__line"></span>
-      <span class="section-label__text">My Process</span>
-    </div>
-    <div class="section__head reveal-up">
-      <h2 class="section__title">How I work, <em>start to finish</em>.</h2>
-    </div>
-    <div class="process__steps">
-      <div class="process__step reveal-up" style="--i:0">
-        <div class="process__step-num">01</div>
-        <div class="process__step-content">
-          <div class="icon-box ib--purple icon-box--lg"><i data-lucide="search"></i></div>
-          <h3>Understand</h3>
-          <p>Define the problem, the audience, and what success looks like.</p>
-        </div>
-        <div class="process__connector" aria-hidden="true"></div>
-      </div>
-      <div class="process__step reveal-up" style="--i:1">
-        <div class="process__step-num">02</div>
-        <div class="process__step-content">
-          <div class="icon-box ib--pink icon-box--lg"><i data-lucide="palette"></i></div>
-          <h3>Design</h3>
-          <p>Create a UI with strong visual structure, motion, and clarity.</p>
-        </div>
-        <div class="process__connector" aria-hidden="true"></div>
-      </div>
-      <div class="process__step reveal-up" style="--i:2">
-        <div class="process__step-num">03</div>
-        <div class="process__step-content">
-          <div class="icon-box ib--cyan icon-box--lg"><i data-lucide="code-2"></i></div>
-          <h3>Build</h3>
-          <p>Develop, iterate, and refine until it feels smooth and premium.</p>
-        </div>
-        <div class="process__connector" aria-hidden="true"></div>
-      </div>
-      <div class="process__step reveal-up" style="--i:3">
-        <div class="process__step-num">04</div>
-        <div class="process__step-content">
-          <div class="icon-box ib--amber icon-box--lg"><i data-lucide="rocket"></i></div>
-          <h3>Ship</h3>
-          <p>Launch with confidence — clean code, tested flows, ready to scale.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ─── Testimonials ─── -->
-  <section class="section testimonials">
-    <div class="section-label reveal-up">
-      <span class="section-label__line"></span>
-      <span class="section-label__text">Client Reviews</span>
-    </div>
-    <div class="section__head reveal-up">
-      <h2 class="section__title">What clients <em>say about me</em>.</h2>
-    </div>
-    <div class="testimonials__grid">
-
-      <article class="testimonial-card reveal-up" style="--i:0">
-        <div class="testimonial-card__stars">
-          <i data-lucide="star" class="star-filled"></i>
-          <i data-lucide="star" class="star-filled"></i>
-          <i data-lucide="star" class="star-filled"></i>
-          <i data-lucide="star" class="star-filled"></i>
-          <i data-lucide="star" class="star-filled"></i>
-        </div>
-        <p class="testimonial-card__text">"Absolutely stunning AI video! Delivered faster than expected. The quality was incredible — exactly what I needed for my product launch. Will definitely order again!"</p>
-        <div class="testimonial-card__author">
-          <img class="testimonial-card__avatar av--purple" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80" alt="James M." />
+    <!-- ═════════ SERVICES ═════════ -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="sec-head sec-head--split" data-reveal>
           <div>
-            <strong>James M.</strong>
-            <span>🇺🇸 USA</span>
+            <span class="eyebrow"><b>03</b> Services</span>
+            <h2 class="sec-title">Everything you need to <em>build &amp; grow</em>.</h2>
+          </div>
+          <p class="sec-sub">From the first sketch to a production deployment — one developer, end to end.</p>
+        </div>
+
+        <div class="services">
+          <article class="card spot service" data-reveal>
+            <span class="service__num">01</span>
+            <span class="service__icon"><i data-lucide="smartphone"></i></span>
+            <h3>Flutter apps</h3>
+            <p>Cross-platform apps for e-commerce, education, finance and dashboards — shipped to Google Play.</p>
+            <ul class="tags tags--sm"><li>iOS &amp; Android</li><li>Firebase</li><li>APIs</li></ul>
+          </article>
+          <article class="card spot service" data-reveal style="--d:.06s">
+            <span class="service__num">02</span>
+            <span class="service__icon"><i data-lucide="send"></i></span>
+            <h3>Telegram bots &amp; automation</h3>
+            <p>High-concurrency bots, automated stores, OTP/SMS gateways and interactive mini apps.</p>
+            <ul class="tags tags--sm"><li>Aiogram 3</li><li>Payments</li><li>VPS</li></ul>
+          </article>
+          <article class="card spot service" data-reveal style="--d:.12s">
+            <span class="service__num">03</span>
+            <span class="service__icon"><i data-lucide="video"></i></span>
+            <h3>AI video generation</h3>
+            <p>Creative AI video for ads, reels, promos and social content that grabs attention.</p>
+            <ul class="tags tags--sm"><li>Ads</li><li>Reels</li><li>Promos</li></ul>
+          </article>
+          <article class="card spot service" data-reveal>
+            <span class="service__num">04</span>
+            <span class="service__icon"><i data-lucide="link-2"></i></span>
+            <h3>Blockchain integrations</h3>
+            <p>Telegram bots connected with TON or other chains, tailored to your project.</p>
+            <ul class="tags tags--sm"><li>TON</li><li>Web3</li></ul>
+          </article>
+          <article class="card spot service" data-reveal style="--d:.06s">
+            <span class="service__num">05</span>
+            <span class="service__icon"><i data-lucide="database"></i></span>
+            <h3>Firebase &amp; APIs</h3>
+            <p>Auth, Firestore, storage, admin flows, payment integration and realtime features.</p>
+            <ul class="tags tags--sm"><li>Auth</li><li>FCM</li><li>REST</li></ul>
+          </article>
+          <article class="card spot service" data-reveal style="--d:.12s">
+            <span class="service__num">06</span>
+            <span class="service__icon"><i data-lucide="palette"></i></span>
+            <h3>UI / UX design</h3>
+            <p>Clean interfaces, premium visuals and smooth motion that feel effortless to use.</p>
+            <ul class="tags tags--sm"><li>Figma</li><li>Motion</li><li>Responsive</li></ul>
+          </article>
+        </div>
+
+        <!-- Process -->
+        <div class="process" data-reveal>
+          <div class="process__step">
+            <span class="process__n">01</span>
+            <h4><i data-lucide="search"></i> Understand</h4>
+            <p>Define the problem, the audience and what success looks like.</p>
+          </div>
+          <div class="process__step">
+            <span class="process__n">02</span>
+            <h4><i data-lucide="pen-tool"></i> Design</h4>
+            <p>A clear visual structure, motion and flows before a line of code.</p>
+          </div>
+          <div class="process__step">
+            <span class="process__n">03</span>
+            <h4><i data-lucide="code-2"></i> Build</h4>
+            <p>Develop, iterate and refine until it feels fast and premium.</p>
+          </div>
+          <div class="process__step">
+            <span class="process__n">04</span>
+            <h4><i data-lucide="rocket"></i> Ship</h4>
+            <p>Launch with confidence — tested flows, clean code, ready to scale.</p>
           </div>
         </div>
-      </article>
-
-      <article class="testimonial-card reveal-up" style="--i:1">
-        <div class="testimonial-card__stars">
-          <i data-lucide="star" class="star-filled"></i>
-          <i data-lucide="star" class="star-filled"></i>
-          <i data-lucide="star" class="star-filled"></i>
-          <i data-lucide="star" class="star-filled"></i>
-          <i data-lucide="star" class="star-filled"></i>
-        </div>
-        <p class="testimonial-card__text">"Built our Telegram bot with TON blockchain features perfectly. Communication was excellent — he understood our requirements immediately and delivered clean, working code."</p>
-        <div class="testimonial-card__author">
-          <img class="testimonial-card__avatar av--cyan" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80" alt="Ahmed R." />
-          <div>
-            <strong>Ahmed R.</strong>
-            <span>🇦🇪 UAE</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="testimonial-card reveal-up" style="--i:2">
-        <div class="testimonial-card__stars">
-          <i data-lucide="star" class="star-filled"></i>
-          <i data-lucide="star" class="star-filled"></i>
-          <i data-lucide="star" class="star-filled"></i>
-          <i data-lucide="star" class="star-filled"></i>
-          <i data-lucide="star" class="star-filled"></i>
-        </div>
-        <p class="testimonial-card__text">"The Flutter app exceeded all our expectations. Beautiful UI, clean architecture, and delivered on schedule. Our users absolutely love it. Highly recommend for any mobile project!"</p>
-        <div class="testimonial-card__author">
-          <img class="testimonial-card__avatar av--pink" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80" alt="Sarah K." />
-          <div>
-            <strong>Sarah K.</strong>
-            <span>🇬🇧 UK</span>
-          </div>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ─── Contact ─── -->
-  <section id="contact" class="section contact">
-    <div class="contact__bg-text" aria-hidden="true">LET'S TALK</div>
-    <div class="contact__inner reveal-up">
-      <div class="section-label">
-        <span class="section-label__line"></span>
-        <span class="section-label__text">Get In Touch</span>
       </div>
-      <h2 class="contact__title">
-        Let's build something<br /><em class="gradient-text">remarkable</em> together.
-      </h2>
-      <p class="contact__sub">
-        Available for Flutter apps, AI video generation, Telegram bots,<br />
-        mini apps, blockchain bot features, and full product builds.
-      </p>
-      <div class="contact__cards">
-        <a class="contact-card contact-card--whatsapp" href="https://wa.me/8801950132764" target="_blank" rel="noreferrer">
-          <div class="contact-card__icon"><i data-lucide="message-circle"></i></div>
-          <div><strong>WhatsApp</strong><span>Chat directly</span></div>
-        </a>
-        <a class="contact-card contact-card--fiverr" href="https://www.fiverr.com/s/LdV7zdo" target="_blank" rel="noreferrer">
-          <div class="contact-card__icon"><i data-lucide="briefcase"></i></div>
-          <div><strong>Fiverr</strong><span>Order a gig</span></div>
-        </a>
-        <a class="contact-card contact-card--upwork" href="https://upwork.com/freelancers/rakibulhasans8" target="_blank" rel="noreferrer">
-          <div class="contact-card__icon"><i data-lucide="handshake"></i></div>
-          <div><strong>Upwork</strong><span>Hire on platform</span></div>
-        </a>
-        <a class="contact-card contact-card--github" href="https://github.com/rakibsojib1" target="_blank" rel="noreferrer">
-          <div class="contact-card__icon">
-            <svg class="contact-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-          </div>
-          <div><strong>GitHub</strong><span>See my code</span></div>
-        </a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ─── Footer ─── -->
+    <!-- ═════════ TESTIMONIALS ═════════ -->
+    <section class="section section--tight" id="reviews">
+      <div class="container">
+        <div class="sec-head" data-reveal>
+          <span class="eyebrow"><b>04</b> Client reviews</span>
+          <h2 class="sec-title">What clients <em>say</em>.</h2>
+        </div>
+      </div>
+      <div class="reviews" data-reveal>
+        <div class="reviews__track">
+          <figure class="card review">
+            <div class="stars">★★★★★</div>
+            <blockquote>“Absolutely stunning AI video! Delivered faster than expected. The quality was incredible — exactly what I needed for my product launch.”</blockquote>
+            <figcaption><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=96&h=96&q=80" alt="" /><span><strong>James M.</strong><small>USA · Fiverr</small></span></figcaption>
+          </figure>
+          <figure class="card review">
+            <div class="stars">★★★★★</div>
+            <blockquote>“Built our Telegram bot with TON blockchain features perfectly. He understood our requirements immediately and delivered clean, working code.”</blockquote>
+            <figcaption><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=96&h=96&q=80" alt="" /><span><strong>Ahmed R.</strong><small>UAE · Telegram bot</small></span></figcaption>
+          </figure>
+          <figure class="card review">
+            <div class="stars">★★★★★</div>
+            <blockquote>“The Flutter app exceeded all our expectations. Beautiful UI, clean architecture and delivered on schedule. Our users love it.”</blockquote>
+            <figcaption><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=96&h=96&q=80" alt="" /><span><strong>Sarah K.</strong><small>UK · Flutter app</small></span></figcaption>
+          </figure>
+          <!-- duplicate for seamless loop -->
+          <figure class="card review" aria-hidden="true">
+            <div class="stars">★★★★★</div>
+            <blockquote>“Absolutely stunning AI video! Delivered faster than expected. The quality was incredible — exactly what I needed for my product launch.”</blockquote>
+            <figcaption><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=96&h=96&q=80" alt="" /><span><strong>James M.</strong><small>USA · Fiverr</small></span></figcaption>
+          </figure>
+          <figure class="card review" aria-hidden="true">
+            <div class="stars">★★★★★</div>
+            <blockquote>“Built our Telegram bot with TON blockchain features perfectly. He understood our requirements immediately and delivered clean, working code.”</blockquote>
+            <figcaption><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=96&h=96&q=80" alt="" /><span><strong>Ahmed R.</strong><small>UAE · Telegram bot</small></span></figcaption>
+          </figure>
+          <figure class="card review" aria-hidden="true">
+            <div class="stars">★★★★★</div>
+            <blockquote>“The Flutter app exceeded all our expectations. Beautiful UI, clean architecture and delivered on schedule. Our users love it.”</blockquote>
+            <figcaption><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=96&h=96&q=80" alt="" /><span><strong>Sarah K.</strong><small>UK · Flutter app</small></span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ CONTACT ═════════ -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="cta" data-reveal>
+          <div class="cta__glow" aria-hidden="true"></div>
+          <span class="eyebrow"><b>05</b> Get in touch</span>
+          <h2 class="cta__title">Let's build something<br /><em>remarkable</em> together.</h2>
+          <p class="cta__sub">Flutter apps, Telegram bots, mini apps, AI video, blockchain features or a full product build — I usually reply within a few hours.</p>
+          <div class="cta__btns">
+            <a class="btn btn--primary btn--lg magnetic" href="https://wa.me/8801950132764" target="_blank" rel="noreferrer"><i data-lucide="message-circle"></i> Chat on WhatsApp</a>
+            <a class="btn btn--ghost btn--lg" href="mailto:rakibc1277@gmail.com"><i data-lucide="mail"></i> rakibc1277@gmail.com</a>
+          </div>
+          <div class="cta__links">
+            <a href="https://www.fiverr.com/s/LdV7zdo" target="_blank" rel="noreferrer"><span>Fiverr</span><small>Order a gig</small><i data-lucide="arrow-up-right"></i></a>
+            <a href="https://upwork.com/freelancers/rakibulhasans8" target="_blank" rel="noreferrer"><span>Upwork</span><small>Hire on platform</small><i data-lucide="arrow-up-right"></i></a>
+            <a href="https://github.com/rakibsojib1" target="_blank" rel="noreferrer"><span>GitHub</span><small>See my code</small><i data-lucide="arrow-up-right"></i></a>
+            <a href="https://t.me/tools_bd_bot" target="_blank" rel="noreferrer"><span>Telegram</span><small>Try my bots</small><i data-lucide="arrow-up-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═════════ FOOTER ═════════ -->
   <footer class="footer">
-    <div class="footer__inner">
-      <div class="footer__brand">
-        <div class="nav__logo-mark nav__logo-mark--sm"><span>RS</span></div>
-        <span>Rakib Sojib</span>
+    <div class="container">
+      <div class="footer__row">
+        <a class="logo" href="#home"><span class="logo__mark">RS</span><span class="logo__name">Rakib Sojib</span></a>
+        <p>© <span id="year"></span> · Flutter, Telegram Bot &amp; AI Developer · Bangladesh</p>
+        <a class="footer__top" href="#home">Back to top <i data-lucide="arrow-up"></i></a>
       </div>
-      <span class="footer__copy">© <span id="year"></span> · Flutter, AI Video &amp; Telegram Bot Developer · Bangladesh</span>
-      <div class="footer__links">
-        <a href="https://github.com/rakibsojib1"  target="_blank" rel="noreferrer"><i data-lucide="github"></i> GitHub</a>
-        <a href="https://www.fiverr.com/s/LdV7zdo" target="_blank" rel="noreferrer"><i data-lucide="briefcase"></i> Fiverr</a>
-        <a href="https://upwork.com/freelancers/rakibulhasans8" target="_blank" rel="noreferrer"><i data-lucide="handshake"></i> Upwork</a>
-      </div>
+      <div class="footer__word" aria-hidden="true">RAKIB SOJIB</div>
     </div>
   </footer>
 
-  <!-- Back to Top -->
-  <button class="back-to-top" id="backToTop" aria-label="Back to top">
-    <span class="back-to-top__arrow"><i data-lucide="chevron-up"></i></span>
-    <svg class="back-to-top__ring" viewBox="0 0 44 44" aria-hidden="true">
-      <circle cx="22" cy="22" r="20" fill="none" stroke="rgba(108,99,255,0.15)" stroke-width="2"/>
-      <circle class="back-to-top__progress" cx="22" cy="22" r="20" fill="none"
-        stroke="url(#bttGrad)" stroke-width="2" stroke-linecap="round"
-        stroke-dasharray="125.66" stroke-dashoffset="125.66"/>
-      <defs>
-        <linearGradient id="bttGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#6c63ff"/>
-          <stop offset="100%" stop-color="#22d3ee"/>
-        </linearGradient>
-      </defs>
-    </svg>
-  </button>
-
-  <!-- Mobile Bottom Nav -->
-  <nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Mobile navigation">
-    <a href="#home"     class="mobile-nav-item active" data-section="home">
-      <i data-lucide="home" class="mobile-nav-item__icon"></i><span>Home</span>
-    </a>
-    <a href="#about"    class="mobile-nav-item" data-section="about">
-      <i data-lucide="user" class="mobile-nav-item__icon"></i><span>About</span>
-    </a>
-    <a href="#projects" class="mobile-nav-item" data-section="projects">
-      <i data-lucide="briefcase" class="mobile-nav-item__icon"></i><span>Work</span>
-    </a>
-    <a href="#contact"  class="mobile-nav-item" data-section="contact">
-      <i data-lucide="mail" class="mobile-nav-item__icon"></i><span>Contact</span>
-    </a>
+  <!-- Mobile bottom nav -->
+  <nav class="dock" aria-label="Mobile navigation">
+    <a href="#home" class="dock__item active" data-section="home"><i data-lucide="home"></i><span>Home</span></a>
+    <a href="#about" class="dock__item" data-section="about"><i data-lucide="user"></i><span>About</span></a>
+    <a href="#projects" class="dock__item" data-section="projects"><i data-lucide="layers"></i><span>Work</span></a>
+    <a href="#services" class="dock__item" data-section="services"><i data-lucide="sparkles"></i><span>Services</span></a>
+    <a href="#contact" class="dock__item" data-section="contact"><i data-lucide="mail"></i><span>Contact</span></a>
   </nav>
 
   <!-- WhatsApp FAB -->
-  <a class="fab" href="https://wa.me/8801950132764" target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp" id="fab">
+  <a class="fab" href="https://wa.me/8801950132764" target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    <span class="fab__pulse"></span>
   </a>
 
-  <!-- Lucide Icon CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="script.js"></script>
 </body>
