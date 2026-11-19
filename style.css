@@ -696,9 +696,11 @@ body.light .cta__glow { opacity: 0.55; }
 .footer__row p { font-size: 0.86rem; color: var(--text-3); }
 .footer__top { display: inline-flex; align-items: center; gap: 6px; font-size: 0.86rem; color: var(--text-2); transition: color 0.3s; }
 .footer__top:hover { color: var(--text); }
+.footer .container { container-type: inline-size; }
 .footer__word {
-  font-size: clamp(3.5rem, 15vw, 13rem); font-weight: 700; letter-spacing: -0.06em; line-height: 0.85;
-  text-align: center; white-space: nowrap; user-select: none;
+  font-size: clamp(2.4rem, 12vw, 11rem); font-size: 15.5cqi; font-weight: 700; letter-spacing: -0.05em; line-height: 0.9;
+  text-align: center; white-space: nowrap; user-select: none; padding: 0 0.08em 0.04em;
+  max-width: 100%; overflow: hidden;
   background: linear-gradient(180deg, var(--line-2), transparent 85%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
